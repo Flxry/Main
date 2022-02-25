@@ -2,6 +2,6 @@ if game.PlaceId == 8357510970 then -- Anime Punching Simulator
 	loadstring(game:HttpGet("https://pastebin.com/raw/QJZcLQPZ"))()
 elseif game.PlaceId == 8592863835 then -- Magnet Simulator 2
 	loadstring(game:HttpGet("https://pastebin.com/raw/ZJxsp4pz"))()
-elseif game.Id == 7107498084 then -- Anime Battle Tycoon
+elseif game.PlaceId == 7107498084 then -- Anime Battle Tycoon
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/Flxry/Main/main/Anime%20Battle%20Tycoon"))()
 end
