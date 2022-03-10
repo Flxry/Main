@@ -13,6 +13,15 @@ pcall(function()
     end)
 end)
 
+--Locals
+local Player = game:GetService("Players").LocalPlayer
+
+--Tables
+local PetList = {}
+for i, v in pairs(game:GetService("ReplicatedStorage").Game.Pets:GetChildren()) do
+    table.insert(PetList, v.Name)
+end
+
 --Gui Colors
 local Colors = {
     SchemeColor = Color3.fromRGB(163, 172, 255),
@@ -32,6 +41,7 @@ local Misc = Window:NewTab("Misc")
 local Other = Misc:NewSection("Other")
 local PetChanger = Window:NewTab("Pet Changer")
 local Pets = PetChanger:NewSection("Pets")
+local Icon = PetChanger:NewSection("Icon")
 
 --Bank
 local Lib = require(game.ReplicatedStorage:WaitForChild('Framework'):WaitForChild('Library'))
@@ -94,6 +104,33 @@ end)
 Pets:NewTextBox("Choose TextureId", "Choose The TextureId", function(v)
     ChooseTexture = v
 	print("Choosen: "..v)
+end)
+
+Pets:NewDropdown("Choose Pet", "Choose The Pet", PetList, function(v)
+    for i2, v2 in pairs(game:GetService("ReplicatedStorage").Game.Pets:GetChildren()) do
+        if v2.Name == v then
+            ChooseMesh = v2.Pet.Mesh.MeshId
+            ChooseTexture = v2.Pet.Mesh.TextureId
+        end
+    end
+end)
+
+Icon:NewButton("Change Pet Icon", "Changes Pet Icon", function(v)
+    for i2, v2 in pairs(game:GetService("Players")[Player].PlayerGui.Inventory.Frame.Main.Pets:GetChildren()) do
+        if v2.ClassName == "TextButton" then
+            v2.PetIcon.Image = ChooseIcon
+        end
+    end
+end)
+
+Icon:NewDropdown("Choose Pet Icon", "Choose The Icon", PetList, function(v)
+    for i2, v2 in pairs(game:GetService("ReplicatedStorage").Game.Pets:GetChildren()) do
+        if v2.Name == v then
+            PetName = v2.Name
+            local PetIcon = require(game:GetService("ReplicatedStorage").Game.Pets[PetName][string.find("Pet")])
+            ChooseIcon = PetIcon.thumbnail
+        end
+    end
 end)
 
 while wait(1) do
