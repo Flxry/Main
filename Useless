@@ -1,0 +1,107 @@
+--Anti Afk
+pcall(function()
+        game:GetService("Players").LocalPlayer.Idled:Connect(function()
+        game:GetService("VirtualUser"):ClickButton2(Vector2.new())
+    end)
+end)
+
+--Bank Withdraw
+pcall(function()
+    spawn(function()
+        workspace.__THINGS.__REMOTES.MAIN:FireServer("b","Bank withdraw")
+        workspace.__THINGS.__REMOTES.MAIN:FireServer("b","Bank deposit")
+    end)
+end)
+
+--Gui Colors
+local Colors = {
+    SchemeColor = Color3.fromRGB(163, 172, 255),
+    Background = Color3.fromRGB(0, 0, 0),
+    Header = Color3.fromRGB(0, 0, 0),
+    TextColor = Color3.fromRGB(255, 255, 255),
+    ElementColor = Color3.fromRGB(20, 20, 20)
+}
+
+--Gui
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Useless", Colors)
+
+local Main = Window:NewTab("Main")
+local Withdrawing = Main:NewSection("Withdrawing")
+local Misc = Window:NewTab("Misc")
+local Other = Misc:NewSection("Other")
+local PetChanger = Window:NewTab("Pet Changer")
+local Pets = PetChanger:NewSection("Pets")
+
+--Bank
+local Lib = require(game.ReplicatedStorage:WaitForChild('Framework'):WaitForChild('Library'))
+local MyBanks = Lib.Network.Invoke("get my banks")
+
+--Timer Gui
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Flxry/Main/main/Timer%20Left%20Gui"))()
+
+Withdrawing:NewToggle("Auto Withdraw", "Automatically Withdraws", function(v)
+getgenv().AutoWithdraw = v
+    spawn(function()
+        while task.wait() do
+            if not AutoWithdraw then break; end
+            if Timer <= 0 then break; end
+            local args = {[1] = {[1] = MyBanks[1]["BUID"],[2] = {},[3] = GemAmount}}
+            workspace.__THINGS.__REMOTES:FindFirstChild("bank withdraw"):InvokeServer(unpack(args))
+            warn("---Withdrawing---")
+            print("Withdrawed "..GemAmount.. " Gem")
+        end
+    end)
+end)
+
+Withdrawing:NewTextBox("Gem Amount", "Choose The Amount Of Gems To Withdraw", function(v)
+    GemAmount = tonumber(v)
+	print("Choosen: "..v)
+end)
+
+Withdrawing:NewTextBox("Choose Minutes", "Choose The Amount Of Time To Withdraw", function(v)
+    TimeAmount = tonumber(v * 60)
+    Timer = TimeAmount
+	print("Choosen: "..v)
+end)
+
+Other:NewButton("Withdraw 25b Gems", "Withdraws 25b Gems", function()
+    local args = {[1] = {[1] = MyBanks[1]["BUID"],[2] = {},[3] = 25000000000}}
+    workspace.__THINGS.__REMOTES:FindFirstChild("bank withdraw"):InvokeServer(unpack(args))
+    print("Withdrawed 25b Gems")
+end)
+
+Other:NewButton("Deposit 25b Gems", "Deposits 25b Gems", function()
+    local args = {[1] = {[1] = MyBanks[1]["BUID"],[2] = {},[3] = 25000000000}}
+    workspace.__THINGS.__REMOTES:FindFirstChild("bank deposit"):InvokeServer(unpack(args))
+    print("Deposited 25b Gems")
+end)
+
+Pets:NewButton("Change Pets", "Changes Pets To Chosen Mesh/Texture", function(v)
+    for i2, v2 in pairs(game:GetService("Workspace")["__THINGS"].Pets:GetChildren()) do
+        if v2.ClassName == "Part" then
+            v2.Mesh.MeshId = ChooseMesh
+            v2.Mesh.TextureId = ChooseTexture
+        end
+    end
+end)
+
+Pets:NewTextBox("Choose MeshId", "Choose The MeshId", function(v)
+    ChooseMesh = v
+	print("Choosen: "..v)
+end)
+
+Pets:NewTextBox("Choose TextureId", "Choose The TextureId", function(v)
+    ChooseTexture = v
+	print("Choosen: "..v)
+end)
+
+while wait(1) do
+    if AutoWithdraw then
+        Timer = Timer - 1
+        Amount.Text = (Timer.." Seconds Left")
+        print("-----------------------------------Time Left:", Timer,"-----------------------------------")
+        if Timer <= 0 then break; end
+    end
+end
+
