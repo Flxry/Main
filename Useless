@@ -246,9 +246,9 @@ Pets:NewDropdown("Choose Pet", "Choose The Pet", PetList, function(v)
 end)
 
 Icon:NewButton("Change Pet Icon", "Changes Pet Icon", function(v)
-    for i2, v2 in pairs(game:GetService("Players")[Player].PlayerGui.Inventory.Frame.Main.Pets:GetChildren()) do
+    for i2, v2 in pairs(game:GetService("Players").DupeForFlury.PlayerGui.Inventory.Frame.Main.Pets:GetChildren()) do
         if v2.ClassName == "TextButton" then
-            v2.PetIcon.Image = ChooseIcon
+            v2.PetIcon.Image = tostring(ChooseIcon)
         end
     end
 end)
@@ -257,8 +257,12 @@ Icon:NewDropdown("Choose Pet Icon", "Choose The Icon", PetList, function(v)
     for i2, v2 in pairs(game:GetService("ReplicatedStorage").Game.Pets:GetChildren()) do
         if v2.Name == v then
             PetName = v2.Name
-            local PetIcon = require(game:GetService("ReplicatedStorage").Game.Pets[PetName][string.find("Pet")])
-            ChooseIcon = PetIcon.thumbnail
+        for i3, v3 in next, game:GetService("ReplicatedStorage").Game.Pets[PetName]:GetChildren() do 
+            if v3.ClassName == "ModuleScript" then 
+            local PetIcon1 = require(v3)
+            ChooseIcon = PetIcon1.thumbnail
+                end
+            end
         end
     end
 end)
