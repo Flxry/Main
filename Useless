@@ -193,6 +193,40 @@ Bank:addToggle("Auto Withdraw", nil, function(value)
     end
 end)
 
+Bank:addToggle("Auto Deposit", nil, function(value)
+    getgenv().AutoDeposit = value
+        for i = 1, 100 do
+            spawn(function()
+                for i = 1, 1000000 do
+                if not AutoDeposit then break; end
+                if Timer <= 0 then break; end
+                local args = {[1] = {[1] = MyBank[1]["BUID"],[2] = {},[3] = GemAmount}}
+                workspace.__THINGS.__REMOTES:FindFirstChild("bank deposit"):InvokeServer(unpack(args))
+                warn("---Depositing---")
+                print("Deposited "..GemAmount.. " Gem")
+            end
+        end)
+    end
+end)
+
+Bank:addToggle("Auto Deposit And Withdraw", nil, function(value)
+    getgenv().AutoDepositWithdraw = value
+        for i = 1, 100 do
+            spawn(function()
+                for i = 1, 1000000 do
+                if not AutoDepositWithdraw then break; end
+                if Timer <= 0 then break; end
+                local args = {[1] = {[1] = MyBank[1]["BUID"],[2] = {},[3] = GemAmount}}
+                workspace.__THINGS.__REMOTES:FindFirstChild("bank deposit"):InvokeServer(unpack(args))
+                local args = {[1] = {[1] = MyBank[1]["BUID"],[2] = {},[3] = GemAmount}}
+                workspace.__THINGS.__REMOTES:FindFirstChild("bank withdraw"):InvokeServer(unpack(args))
+                warn("---Depositing And Withdrawing---")
+                print("Deposited And Withdrawed "..GemAmount.. " Gem")
+            end
+        end)
+    end
+end)
+
 Bank:addTextbox("Choose Time", "0", function(value)
     TimerAmount = tonumber(value)
     if TimerAmount ~= nil then
@@ -207,8 +241,8 @@ Bank:addTextbox("Choose Gem Amount", "0", function(value)
 end)
 
 spawn(function()
-    while wait(1) do
-        if AutoWithdraw then
+        while wait(1) do
+            if AutoWithdraw or AutoDeposit or AutoDepositWithdraw then
             Timer = Timer - 1
             Amount.Text = (Timer.." Seconds Left")
             print("-----------------------------------Time Left:", Timer,"-----------------------------------")
