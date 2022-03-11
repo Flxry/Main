@@ -1,20 +1,4 @@
---Anti Afk
-pcall(function()
-        game:GetService("Players").LocalPlayer.Idled:Connect(function()
-        game:GetService("VirtualUser"):ClickButton2(Vector2.new())
-    end)
-end)
-
---Bank Withdraw
-pcall(function()
-    spawn(function()
-        workspace.__THINGS.__REMOTES.MAIN:FireServer("b","Bank withdraw")
-        workspace.__THINGS.__REMOTES.MAIN:FireServer("b","Bank deposit")
-    end)
-end)
-
 --Locals
-local Player = game:GetService("Players").LocalPlayer
 
 --Tables
 local PetList = {}
@@ -22,111 +6,91 @@ for i, v in pairs(game:GetService("ReplicatedStorage").Game.Pets:GetChildren()) 
     table.insert(PetList, v.Name)
 end
 
---Gui Colors
-local Colors = {
-    SchemeColor = Color3.fromRGB(163, 172, 255),
-    Background = Color3.fromRGB(0, 0, 0),
-    Header = Color3.fromRGB(0, 0, 0),
-    TextColor = Color3.fromRGB(255, 255, 255),
-    ElementColor = Color3.fromRGB(20, 20, 20)
-}
+--AntiAfk
+pcall(function()
+    game:GetService("Players").LocalPlayer.Idled:Connect(function()
+        game:GetService("VirtualUser"):ClickButton2(Vector2.new())
+    end)
+end)
+
+--Pcalls
+pcall(function()
+    spawn(function()
+        workspace.__THINGS.__REMOTES.MAIN:FireServer("b","Bank withdraw")
+        workspace.__THINGS.__REMOTES.MAIN:FireServer("b","Bank deposit")
+    end)
+ end)
 
 --Gui
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Library.CreateLib("Useless", Colors)
-
-local Main = Window:NewTab("Main")
-local Withdrawing = Main:NewSection("Withdrawing")
-local Misc = Window:NewTab("Misc")
-local Other = Misc:NewSection("Other")
-local PetChanger = Window:NewTab("Pet Changer")
-local Pets = PetChanger:NewSection("Pets")
-local Icon = PetChanger:NewSection("Icon")
-
---Timer Gui/Script
-local TimerMain = Instance.new("ScreenGui")
-local TimerFrame = Instance.new("Frame")
-local Timer = Instance.new("Frame")
-local Icon1 = Instance.new("ImageLabel")
-local Amount = Instance.new("TextLabel")
-local CoinsGradient = Instance.new("UIGradient")
-local UIStroke_3 = Instance.new("UIStroke")
-local Add = Instance.new("TextButton")
+local Main1 = Instance.new("ScreenGui")
+local UIPadding = Instance.new("UIPadding")
+local Right = Instance.new("Frame")
+local TimerLeft = Instance.new("Frame")
 local UICorner = Instance.new("UICorner")
 local UIStroke = Instance.new("UIStroke")
+local Icon = Instance.new("ImageLabel")
+local Add = Instance.new("TextButton")
 local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
 local UICorner_2 = Instance.new("UICorner")
 local UIStroke_2 = Instance.new("UIStroke")
+local Amount = Instance.new("TextLabel")
+local CoinsGradient = Instance.new("UIGradient")
+local UIStroke_3 = Instance.new("UIStroke")
 local UIAspectRatioConstraint_2 = Instance.new("UIAspectRatioConstraint")
 local UIListLayout = Instance.new("UIListLayout")
-local UIPadding = Instance.new("UIPadding")
 
-TimerMain.Name = "TimerMain"
-TimerMain.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-TimerMain.DisplayOrder = 5
-TimerMain.ResetOnSpawn = false
+Main1.Name = "Main"
+Main1.Parent = game.CoreGui
+Main1.DisplayOrder = 5
+Main1.ResetOnSpawn = false
 
-TimerFrame.Name = "TimerFrame"
-TimerFrame.Parent = TimerMain
-TimerFrame.AnchorPoint = Vector2.new(1, 0.5)
-TimerFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TimerFrame.BackgroundTransparency = 1.000
-TimerFrame.BorderSizePixel = 0
-TimerFrame.Position = UDim2.new(1, -5,0.609, 0)
-TimerFrame.Size = UDim2.new(0.300000012, 175, 0.300000012, 100)
+UIPadding.Parent = Main1
+UIPadding.PaddingBottom = UDim.new(0, 12)
+UIPadding.PaddingLeft = UDim.new(0, 12)
+UIPadding.PaddingRight = UDim.new(0, 12)
+UIPadding.PaddingTop = UDim.new(0, -6)
 
-Timer.Name = "Timer"
-Timer.Parent = TimerFrame
-Timer.AnchorPoint = Vector2.new(1, 0.5)
-Timer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Timer.BorderSizePixel = 0
-Timer.LayoutOrder = 2
-Timer.Position = UDim2.new(1, 0, 0.5, 0)
-Timer.Size = UDim2.new(0.899999976, 0, 0.100000001, 8)
+Right.Name = "Right"
+Right.Parent = Main1
+Right.AnchorPoint = Vector2.new(1, 0.5)
+Right.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Right.BackgroundTransparency = 1.000
+Right.BorderSizePixel = 0
+Right.Position = UDim2.new(1, -5, 0.959999979, 0)
+Right.Size = UDim2.new(0.000483874726, 175, 0.291648448, 100)
 
-Icon1.Name = "Icon"
-Icon1.Parent = Timer
-Icon1.AnchorPoint = Vector2.new(0.5, 0.5)
-Icon1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Icon1.BackgroundTransparency = 1.000
-Icon1.BorderSizePixel = 0
-Icon1.Position = UDim2.new(0.941863, 2, 0.485545278, 0)
-Icon1.Rotation = -10.000
-Icon1.Size = UDim2.new(0.556690276, 4, 1.61801076, 4)
-Icon1.Image = "http://www.roblox.com/asset/?id=9057365441"
-Icon1.ScaleType = Enum.ScaleType.Fit
+TimerLeft.Name = "TimerLeft"
+TimerLeft.Parent = Right
+TimerLeft.AnchorPoint = Vector2.new(1, 0.5)
+TimerLeft.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TimerLeft.BorderSizePixel = 0
+TimerLeft.LayoutOrder = 2
+TimerLeft.Position = UDim2.new(1, 0, 0.5, 0)
+TimerLeft.Size = UDim2.new(0.899999976, 0, 0.100000001, 8)
 
-Amount.Name = "Amount"
-Amount.Parent = Timer
-Amount.AnchorPoint = Vector2.new(0, 0.5)
-Amount.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Amount.BackgroundTransparency = 1.000
-Amount.BorderSizePixel = 0
-Amount.Position = UDim2.new(0.0649999976, 2, 0.5, 0)
-Amount.Size = UDim2.new(0.735000014, -4, 0.800000012, 0)
-Amount.ZIndex = 2
-Amount.Font = Enum.Font.GothamBlack
-Amount.Text = "0"
-Amount.TextColor3 = Color3.fromRGB(255, 255, 255)
-Amount.TextScaled = true
-Amount.TextSize = 14.000
-Amount.TextStrokeColor3 = Color3.fromRGB(106, 106, 106)
-Amount.TextStrokeTransparency = 0.000
-Amount.TextWrapped = true
-Amount.TextXAlignment = Enum.TextXAlignment.Right
+UICorner.CornerRadius = UDim.new(1, 0)
+UICorner.Parent = TimerLeft
 
-CoinsGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(92, 141, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(107, 255, 238))}
-CoinsGradient.Rotation = 90
-CoinsGradient.Name = "Coins Gradient"
-CoinsGradient.Parent = Amount
+UIStroke.Color = Color3.fromRGB(28, 69, 82)
+UIStroke.LineJoinMode = "Round"
+UIStroke.Thickness = 5
+UIStroke.Parent = TimerLeft
 
-UIStroke_3.Color = Color3.fromRGB(28, 69, 82)
-UIStroke_3.Parent = Amount
-UIStroke_3.LineJoinMode = "Bevel"
-UIStroke_3.Thickness = 2.75
+Icon.Name = "Icon"
+Icon.Parent = TimerLeft
+Icon.AnchorPoint = Vector2.new(0.5, 0.5)
+Icon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Icon.BackgroundTransparency = 1.000
+Icon.BorderColor3 = Color3.fromRGB(17, 45, 53)
+Icon.BorderSizePixel = 0
+Icon.Position = UDim2.new(0.943978906, 2, 0.484338522, 0)
+Icon.Rotation = -10.000
+Icon.Size = UDim2.new(0.726112902, 4, 3.50720859, 4)
+Icon.Image = "http://www.roblox.com/asset/?id=9057365441"
+Icon.ScaleType = Enum.ScaleType.Fit
 
 Add.Name = "Add"
-Add.Parent = Timer
+Add.Parent = TimerLeft
 Add.AnchorPoint = Vector2.new(0.5, 0.5)
 Add.BackgroundColor3 = Color3.fromRGB(59, 177, 252)
 Add.BorderSizePixel = 0
@@ -141,130 +105,105 @@ Add.TextScaled = true
 Add.TextSize = 18.000
 Add.TextWrapped = true
 
-UICorner.CornerRadius = UDim.new(1, 0)
-UICorner.Parent = Add
-
-UIStroke.Color = Color3.fromRGB(28, 69, 82)
-UIStroke.Parent = Add
-UIStroke.LineJoinMode = "Round"
-UIStroke.Thickness = 4
-
 UIAspectRatioConstraint.Parent = Add
 
 UICorner_2.CornerRadius = UDim.new(1, 0)
-UICorner_2.Parent = Timer
-
+UICorner_2.Parent = Add
 
 UIStroke_2.Color = Color3.fromRGB(28, 69, 82)
-UIStroke_2.Parent = Timer
 UIStroke_2.LineJoinMode = "Round"
-UIStroke_2.Thickness = 5
+UIStroke_2.Thickness = 4
+UIStroke_2.Parent = Add
 
-UIAspectRatioConstraint_2.Parent = TimerFrame
+Amount.Name = "Amount"
+Amount.Parent = TimerLeft
+Amount.AnchorPoint = Vector2.new(0, 0.5)
+Amount.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Amount.BackgroundTransparency = 1.000
+Amount.BorderSizePixel = 0
+Amount.Position = UDim2.new(0.0649999976, 2, 0.5, 0)
+Amount.Size = UDim2.new(0.735000014, -4, 0.800000012, 0)
+Amount.ZIndex = 2
+Amount.Font = Enum.Font.GothamBlack
+Amount.Text = "Select A Time"
+Amount.TextColor3 = Color3.fromRGB(255, 255, 255)
+Amount.TextScaled = true
+Amount.TextSize = 14.000
+Amount.TextStrokeColor3 = Color3.fromRGB(106, 106, 106)
+Amount.TextStrokeTransparency = 0.000
+Amount.TextWrapped = true
+Amount.TextXAlignment = Enum.TextXAlignment.Right
+
+CoinsGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(106, 116, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(176, 248, 255))}
+CoinsGradient.Rotation = 90
+CoinsGradient.Name = "Coins Gradient"
+CoinsGradient.Parent = Amount
+
+UIStroke_3.Color = Color3.fromRGB(28, 69, 82)
+UIStroke_3.LineJoinMode = "Round"
+UIStroke_3.Thickness = 2.75
+UIStroke_3.Parent = Amount
+
+
+UIAspectRatioConstraint_2.Parent = Right
 UIAspectRatioConstraint_2.AspectRatio = 0.700
 UIAspectRatioConstraint_2.DominantAxis = Enum.DominantAxis.Height
 
-UIListLayout.Parent = TimerFrame
+UIListLayout.Parent = Right
 UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Right
 UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Center
 UIListLayout.Padding = UDim.new(0.0399999991, 2)
 
-UIPadding.Parent = TimerMain
-UIPadding.PaddingBottom = UDim.new(0, 12)
-UIPadding.PaddingLeft = UDim.new(0, 12)
-UIPadding.PaddingRight = UDim.new(0, 12)
-UIPadding.PaddingTop = UDim.new(0, -6)
-
 --Bank
 local Lib = require(game.ReplicatedStorage:WaitForChild('Framework'):WaitForChild('Library'))
-local MyBanks = Lib.Network.Invoke("get my banks")
+local MyBank = Lib.Network.Invoke("get my banks")
 
-Withdrawing:NewToggle("Auto Withdraw", "Automatically Withdraws", function(v)
-getgenv().AutoWithdraw = v
-    spawn(function()
-        while task.wait() do
-            if not AutoWithdraw then break; end
-            if Timer <= 0 then break; end
-            local args = {[1] = {[1] = MyBanks[1]["BUID"],[2] = {},[3] = GemAmount}}
-            workspace.__THINGS.__REMOTES:FindFirstChild("bank withdraw"):InvokeServer(unpack(args))
-            warn("---Withdrawing---")
-            print("Withdrawed "..GemAmount.. " Gem")
-        end
-    end)
-end)
+--Ui Library
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/GreenDeno/Venyx-UI-Library/main/source.lua"))()
+local Flury = Library.new("v.01 Useless", 5013109572)
 
-Withdrawing:NewTextBox("Gem Amount", "Choose The Amount Of Gems To Withdraw", function(v)
-    GemAmount = tonumber(v)
-	print("Choosen: "..v)
-end)
+--Themes
+local Themes = {
+Background = Color3.fromRGB(24, 24, 24),
+Glow = Color3.fromRGB(0, 0, 0),
+Accent = Color3.fromRGB(10, 10, 10),
+LightContrast = Color3.fromRGB(20, 20, 20),
+DarkContrast = Color3.fromRGB(14, 14, 14),  
+TextColor = Color3.fromRGB(255, 255, 255)
+}
 
-Withdrawing:NewTextBox("Choose Minutes", "Choose The Amount Of Time To Withdraw", function(v)
-    TimeAmount = tonumber(v * 60)
-    Timer = TimeAmount
-	print("Choosen: "..v)
-end)
+--Bank
+local Main = Flury:addPage("Main", 5012544693)
+local Bank = Main:addSection("Bank")
 
-Other:NewButton("Withdraw 25b Gems", "Withdraws 25b Gems", function()
-    local args = {[1] = {[1] = MyBanks[1]["BUID"],[2] = {},[3] = 25000000000}}
-    workspace.__THINGS.__REMOTES:FindFirstChild("bank withdraw"):InvokeServer(unpack(args))
-    print("Withdrawed 25b Gems")
-end)
-
-Other:NewButton("Deposit 25b Gems", "Deposits 25b Gems", function()
-    local args = {[1] = {[1] = MyBanks[1]["BUID"],[2] = {},[3] = 25000000000}}
-    workspace.__THINGS.__REMOTES:FindFirstChild("bank deposit"):InvokeServer(unpack(args))
-    print("Deposited 25b Gems")
-end)
-
-Pets:NewButton("Change Pets", "Changes Pets To Chosen Mesh/Texture", function(v)
-    for i2, v2 in pairs(game:GetService("Workspace")["__THINGS"].Pets:GetChildren()) do
-        if v2.ClassName == "Part" then
-            v2.Mesh.MeshId = ChooseMesh
-            v2.Mesh.TextureId = ChooseTexture
-        end
-    end
-end)
-
-Pets:NewTextBox("Choose MeshId", "Choose The MeshId", function(v)
-    ChooseMesh = v
-	print("Choosen: "..v)
-end)
-
-Pets:NewTextBox("Choose TextureId", "Choose The TextureId", function(v)
-    ChooseTexture = v
-	print("Choosen: "..v)
-end)
-
-Pets:NewDropdown("Choose Pet", "Choose The Pet", PetList, function(v)
-    for i2, v2 in pairs(game:GetService("ReplicatedStorage").Game.Pets:GetChildren()) do
-        if v2.Name == v then
-            ChooseMesh = v2.Pet.Mesh.MeshId
-            ChooseTexture = v2.Pet.Mesh.TextureId
-        end
-    end
-end)
-
-Icon:NewButton("Change Pet Icon", "Changes Pet Icon", function(v)
-    for i2, v2 in pairs(game:GetService("Players").LocalPlayer.PlayerGui.Inventory.Frame.Main.Pets:GetChildren()) do
-        if v2.ClassName == "TextButton" then
-            v2.PetIcon.Image = tostring(ChooseIcon)
-        end
-    end
-end)
-
-Icon:NewDropdown("Choose Pet Icon", "Choose The Icon", PetList, function(v)
-    for i2, v2 in pairs(game:GetService("ReplicatedStorage").Game.Pets:GetChildren()) do
-        if v2.Name == v then
-            PetName = v2.Name
-        for i3, v3 in next, game:GetService("ReplicatedStorage").Game.Pets[PetName]:GetChildren() do 
-            if v3.ClassName == "ModuleScript" then 
-            local PetIcon1 = require(v3)
-            ChooseIcon = PetIcon1.thumbnail
-                end
+Bank:addToggle("Auto Withdraw", nil, function(value)
+    getgenv().AutoWithdraw = value
+        for i = 1, 100 do
+            spawn(function()
+                for i = 1, 1000000 do
+                if not AutoWithdraw then break; end
+                if Timer <= 0 then break; end
+                local args = {[1] = {[1] = MyBank[1]["BUID"],[2] = {},[3] = GemAmount}}
+                workspace.__THINGS.__REMOTES:FindFirstChild("bank withdraw"):InvokeServer(unpack(args))
+                warn("---Withdrawing---")
+                print("Withdrawed "..GemAmount.. " Gem")
             end
-        end
+        end)
     end
+end)
+
+Bank:addTextbox("Choose Time", "0", function(value)
+    TimerAmount = tonumber(value)
+    if TimerAmount ~= nil then
+        Timer = TimerAmount * 60
+        print("Choosen: "..value)
+    end
+end)
+
+Bank:addTextbox("Choose Gem Amount", "0", function(value)
+    GemAmount = tonumber(value)
+	print("Choosen: "..value)
 end)
 
 spawn(function()
@@ -277,3 +216,95 @@ spawn(function()
         end
     end
 end)
+
+--Pets
+local Pets = Flury:addPage("Pets", 5012544693)
+local PetChanger = Pets:addSection("Pet Changer")
+local IconChanger = Pets:addSection("Icon Changer")
+
+PetChanger:addButton("Change Pets", function(value)
+    for i, v in pairs(game:GetService("Workspace")["__THINGS"].Pets:GetChildren()) do
+        if v.ClassName == "Part" then
+            v.Mesh.MeshId = ChooseMesh
+            v.Mesh.TextureId = ChooseTexture
+        end
+    end
+end)
+
+PetChanger:addTextbox("Choose MeshId - Custom", "Id", function(value)
+    ChooseMesh = value
+end)
+
+PetChanger:addTextbox("Choose TextureId - Custom", "Id", function(value)
+    ChooseTexture = value
+end)
+
+PetChanger:addDropdown("Choose Pet",PetList, function(value)
+    for i, v in pairs(game:GetService("ReplicatedStorage").Game.Pets:GetChildren()) do
+        if v.Name == value then
+            ChooseMesh = v.Pet.Mesh.MeshId
+            ChooseTexture = v.Pet.Mesh.TextureId
+        end
+    end
+end)
+
+PetChanger:addButton("Make Pets Huge", function(value)
+    for i, v in pairs(game:GetService("Workspace")["__THINGS"].Pets:GetChildren()) do
+        if v.ClassName == "Part" then
+            v.Mesh.Scale = Vector3.new(Size,Size,Size)
+        end
+    end
+end)
+
+PetChanger:addSlider("Chooze Size", 0, 0, 50, function(value)
+    Size = value
+end)
+
+IconChanger:addButton("Change Pets", function(value)
+    for i, v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.Inventory.Frame.Main.Pets:GetChildren()) do
+        if v.ClassName == "TextButton" then
+            v.PetIcon.Image = tostring(ChooseIcon)
+        end
+    end
+end)
+
+IconChanger:addDropdown("Choose Pet",PetList, function(value)
+    for i, v in pairs(game:GetService("ReplicatedStorage").Game.Pets:GetChildren()) do
+                if v.Name == value then
+                    PetName = v.Name
+                    for i2, v2 in next, game:GetService("ReplicatedStorage").Game.Pets[PetName]:GetChildren() do 
+                    if v2.ClassName == "ModuleScript" then 
+                    local PetIcon1 = require(v2)
+                    ChooseIcon = PetIcon1.thumbnail
+                end
+            end
+        end
+    end
+end)
+
+
+local Settings = Flury:addPage("Settings", 5012544693)
+local Theme = Settings:addSection("Theme")
+
+for theme, color in pairs(Themes) do 
+	Theme:addColorPicker(theme, color, function(color3)
+		Flury:setTheme(theme, color3)
+	end)
+end
+
+Theme:addKeybind("Toggle Keybind", Enum.KeyCode.RightShift, function()
+	print("Activated Keybind")
+	Flury:toggle()
+end, function()
+	print("Changed Keybind")
+end)
+
+Theme:addButton("Destroy Gui", function()
+    for i,v in pairs(game.CoreGui:GetChildren()) do
+        if v.Name == "v.01 Useless" then
+            v:Destroy()
+        end
+    end
+end)
+
+Flury:SelectPage(Flury.pages[1], true)
