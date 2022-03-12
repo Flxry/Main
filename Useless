@@ -179,7 +179,7 @@ local Bank = Main:addSection("Bank")
 
 Bank:addToggle("Auto Withdraw", nil, function(value)
     getgenv().AutoWithdraw = value
-        for i = 1, 100000 do
+        for i = 1, 100 do
             spawn(function()
                 for i = 1, 100000000 do
                 if not AutoWithdraw then break; end
@@ -195,7 +195,7 @@ end)
 
 Bank:addToggle("Auto Deposit", nil, function(value)
     getgenv().AutoDeposit = value
-        for i = 1, 100000 do
+        for i = 1, 100 do
             spawn(function()
                 for i = 1, 100000000 do
                 if not AutoDeposit then break; end
@@ -211,7 +211,7 @@ end)
 
 Bank:addToggle("Auto Deposit And Withdraw", nil, function(value)
     getgenv().AutoDepositWithdraw = value
-        for i = 1, 100000 do
+        for i = 1, 100 do
             spawn(function()
                 for i = 1, 100000000 do
                 if not AutoDepositWithdraw then break; end
