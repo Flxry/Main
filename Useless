@@ -273,7 +273,7 @@ PetChanger:addTextbox("Choose TextureId - Custom", "Id", function(value)
     ChooseTexture = value
 end)
 
-PetChanger:addDropdown("Choose Pet",PetList, function(value)
+PetChanger:addDropdown("Choose Pet", PetList, function(value)
     for i, v in pairs(game:GetService("ReplicatedStorage").Game.Pets:GetChildren()) do
         if v.Name == value then
             ChooseMesh = v.Pet.Mesh.MeshId
@@ -282,19 +282,29 @@ PetChanger:addDropdown("Choose Pet",PetList, function(value)
     end
 end)
 
-PetChanger:addButton("Make Pets Huge", function(value)
-    for i, v in pairs(game:GetService("Workspace")["__THINGS"].Pets:GetChildren()) do
-        if v.ClassName == "Part" then
-            v.Mesh.Scale = Vector3.new(Size,Size,Size)
+PetChanger:addDropdown("Choose Golden Pet", PetList, function(value)
+    for i, v in pairs(game:GetService("ReplicatedStorage").Game.Pets:GetChildren()) do
+        if v.Name == value then
+            ChooseMesh = v.Golden.Mesh.MeshId
+            ChooseTexture = v.Golden.Mesh.TextureId
         end
     end
 end)
 
-PetChanger:addSlider("Chooze Size", 0, 0, 50, function(value)
-    Size = value
+PetChanger:addButton("Make Pets Huge", function(value)
+    for i, v in pairs(game:GetService("Workspace")["__THINGS"].Pets:GetChildren()) do
+        if v.ClassName == "Part" then
+            v.Mesh.Scale = Vector3.new(2,2,2)
+            v.center.CFrame = CFrame.new(0, -1.34633398, -1.43630981, 0, 0, 1, 0, 1, -0, -1, 0, 0)
+            v.bottom.CFrame = CFrame.new(0, -4.10126972, -1.43630981, 0, 0, 1, 0, 1, -0, -1, 0, 0)
+            v.bottom.Position = Vector3.new(0, -4.10127, -1.43631)
+            Position = v.Position
+            v.Position = Vector3.new(Position * 4,Position,Position * 4)
+        end
+    end
 end)
 
-IconChanger:addButton("Change Pets", function(value)
+IconChanger:addButton("Change Icons", function(value)
     for i, v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.Inventory.Frame.Main.Pets:GetChildren()) do
         if v.ClassName == "TextButton" then
             v.PetIcon.Image = tostring(ChooseIcon)
@@ -302,7 +312,7 @@ IconChanger:addButton("Change Pets", function(value)
     end
 end)
 
-IconChanger:addDropdown("Choose Pet",PetList, function(value)
+IconChanger:addDropdown("Choose Pet", PetList, function(value)
     for i, v in pairs(game:GetService("ReplicatedStorage").Game.Pets:GetChildren()) do
                 if v.Name == value then
                     PetName = v.Name
@@ -316,6 +326,33 @@ IconChanger:addDropdown("Choose Pet",PetList, function(value)
     end
 end)
 
+IconChanger:addDropdown("Choose Golden Pet", PetList, function(value)
+    for i, v in pairs(game:GetService("ReplicatedStorage").Game.Pets:GetChildren()) do
+                if v.Name == value then
+                    PetName = v.Name
+                    for i2, v2 in next, game:GetService("ReplicatedStorage").Game.Pets[PetName]:GetChildren() do 
+                    if v2.ClassName == "ModuleScript" then 
+                    local PetIcon1 = require(v2)
+                    ChooseIcon = PetIcon1.goldenThumbnail
+                end
+            end
+        end
+    end
+end)
+
+IconChanger:addDropdown("Choose DarkMatter Pet", PetList, function(value)
+    for i, v in pairs(game:GetService("ReplicatedStorage").Game.Pets:GetChildren()) do
+                if v.Name == value then
+                    PetName = v.Name
+                    for i2, v2 in next, game:GetService("ReplicatedStorage").Game.Pets[PetName]:GetChildren() do 
+                    if v2.ClassName == "ModuleScript" then 
+                    local PetIcon1 = require(v2)
+                    ChooseIcon = PetIcon1.darkMatterThumbnail
+                end
+            end
+        end
+    end
+end)
 
 local Settings = Flury:addPage("Settings", 5012544693)
 local Theme = Settings:addSection("Theme")
@@ -342,3 +379,4 @@ Theme:addButton("Destroy Gui", function()
 end)
 
 Flury:SelectPage(Flury.pages[1], true)
+
