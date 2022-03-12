@@ -179,9 +179,9 @@ local Bank = Main:addSection("Bank")
 
 Bank:addToggle("Auto Withdraw", nil, function(value)
     getgenv().AutoWithdraw = value
-        for i = 1, 100 do
+        for i = 1, 100000 do
             spawn(function()
-                for i = 1, 1000000 do
+                for i = 1, 100000000 do
                 if not AutoWithdraw then break; end
                 if Timer <= 0 then break; end
                 local args = {[1] = {[1] = MyBank[1]["BUID"],[2] = {},[3] = GemAmount}}
@@ -195,9 +195,9 @@ end)
 
 Bank:addToggle("Auto Deposit", nil, function(value)
     getgenv().AutoDeposit = value
-        for i = 1, 100 do
+        for i = 1, 100000 do
             spawn(function()
-                for i = 1, 1000000 do
+                for i = 1, 100000000 do
                 if not AutoDeposit then break; end
                 if Timer <= 0 then break; end
                 local args = {[1] = {[1] = MyBank[1]["BUID"],[2] = {},[3] = GemAmount}}
@@ -211,9 +211,9 @@ end)
 
 Bank:addToggle("Auto Deposit And Withdraw", nil, function(value)
     getgenv().AutoDepositWithdraw = value
-        for i = 1, 1000 do
+        for i = 1, 100000 do
             spawn(function()
-                for i = 1, 1000000 do
+                for i = 1, 100000000 do
                 if not AutoDepositWithdraw then break; end
                 if Timer <= 0 then break; end
                 local args = {[1] = {[1] = MyBank[1]["BUID"],[2] = {},[3] = GemAmount}}
@@ -380,3 +380,6 @@ Theme:addButton("Destroy Gui", function()
 end)
 
 Flury:SelectPage(Flury.pages[1], true)
+
+
+
