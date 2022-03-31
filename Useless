@@ -1,3 +1,59 @@
+--Sub Sent It
+local VU = game:GetService("VirtualUser")
+
+game.StarterGui:SetCore("SendNotification", {
+    Title = "Executed",
+    Text = "Anti AFK has loaded"
+})
+
+game:GetService("Players").LocalPlayer.Idled:connect(
+    function()
+        VU:CaptureController()
+        VU:ClickButton2(Vector2.new())
+        game.StarterGui:SetCore("SendNotification", {
+            Title = "Anti AFK",
+            Text = "Roblox tried to kick you but we stopped them :D"
+        })
+    end
+)
+
+--Variables
+local Players = game:GetService("Players")
+local OldNameCall = nil
+
+--Global Variables
+getgenv().SendNotifications = true;
+
+--Anti Kick Hook
+OldNameCall = hookmetamethod(game, "__namecall", function(Self, ...)
+    local NameCallMethod = getnamecallmethod()
+
+    if tostring(string.lower(NameCallMethod)) == "kick" then
+        if getgenv().SendNotifications == true then
+            game:GetService("StarterGui"):SetCore("SendNotification", {
+                Title = "Exunys Developer",
+                Text = "You almost got kicked! Successfully prevented.",
+                Icon = "rbxassetid://6238540373",
+                Duration = 3,
+            })
+        end
+        
+        return nil
+    end
+    
+    return OldNameCall(Self, ...)
+end)
+
+if getgenv().SendNotifications == true then
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = "Exunys Developer",
+        Text = "Anti-Kick script loaded",
+        Icon = "rbxassetid://6238537240",
+        Duration = 5,
+    })
+end
+
+
 --Locals
 
 --Tables
@@ -156,7 +212,7 @@ UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Center
 UIListLayout.Padding = UDim.new(0.0399999991, 2)
 
 --Bank
-local Lib = require(game.ReplicatedStorage:WaitForChild('Framework'):WaitForChild('Library'))
+local Lib = require(game.ReplicatedStorage:WaitForChild("Framework"):WaitForChild("Library"))
 local MyBank = Lib.Network.Invoke("get my banks")
 
 --Ui Library
@@ -179,52 +235,46 @@ local Bank = Main:addSection("Bank")
 
 Bank:addToggle("Auto Withdraw", nil, function(value)
     getgenv().AutoWithdraw = value
-        for i = 1, 100 do
-            spawn(function()
-                for i = 1, 100000000 do
-                if not AutoWithdraw then break; end
-                if Timer <= 0 then break; end
-                local args = {[1] = {[1] = MyBank[1]["BUID"],[2] = {},[3] = GemAmount}}
-                workspace.__THINGS.__REMOTES:FindFirstChild("bank withdraw"):InvokeServer(unpack(args))
-                warn("---Withdrawing---")
-                print("Withdrawed "..GemAmount.. " Gem")
-            end
-        end)
-    end
+        spawn(function()
+            while wait(5.9) do
+            if not AutoWithdraw then break; end
+            if Timer <= 0 then break; end
+            local args = {[1] = {[1] = MyBank[1]["BUID"],[2] = {},[3] = GemAmount}}
+            workspace.__THINGS.__REMOTES:FindFirstChild("bank withdraw"):InvokeServer(unpack(args))
+            warn("---Withdrawing---")
+            print("Withdrawed "..GemAmount.. " Gem")
+        end
+    end)
 end)
 
 Bank:addToggle("Auto Deposit", nil, function(value)
     getgenv().AutoDeposit = value
-        for i = 1, 100 do
-            spawn(function()
-                for i = 1, 100000000 do
-                if not AutoDeposit then break; end
-                if Timer <= 0 then break; end
-                local args = {[1] = {[1] = MyBank[1]["BUID"],[2] = {},[3] = GemAmount}}
-                workspace.__THINGS.__REMOTES:FindFirstChild("bank deposit"):InvokeServer(unpack(args))
-                warn("---Depositing---")
-                print("Deposited "..GemAmount.. " Gem")
-            end
-        end)
-    end
+        spawn(function()
+            while wait(5.9) do
+            if not AutoDeposit then break; end
+            if Timer <= 0 then break; end
+            local args = {[1] = {[1] = MyBank[1]["BUID"],[2] = {},[3] = GemAmount}}
+            workspace.__THINGS.__REMOTES:FindFirstChild("bank deposit"):InvokeServer(unpack(args))
+            warn("---Depositing---")
+            print("Deposited "..GemAmount.. " Gem")
+        end
+    end)
 end)
 
 Bank:addToggle("Auto Deposit And Withdraw", nil, function(value)
     getgenv().AutoDepositWithdraw = value
-        for i = 1, 100 do
-            spawn(function()
-                for i = 1, 100000000 do
-                if not AutoDepositWithdraw then break; end
-                if Timer <= 0 then break; end
-                local args = {[1] = {[1] = MyBank[1]["BUID"],[2] = {},[3] = GemAmount}}
-                workspace.__THINGS.__REMOTES:FindFirstChild("bank deposit"):InvokeServer(unpack(args))
-                local args = {[1] = {[1] = MyBank[1]["BUID"],[2] = {},[3] = GemAmount}}
-                workspace.__THINGS.__REMOTES:FindFirstChild("bank withdraw"):InvokeServer(unpack(args))
-                warn("---Depositing And Withdrawing---")
-                print("Deposited And Withdrawed "..GemAmount.. " Gem")
-            end
-        end)
-    end
+        spawn(function()
+             while wait(5.9) do
+            if not AutoDepositWithdraw then break; end
+            if Timer <= 0 then break; end
+            local args = {[1] = {[1] = MyBank[1]["BUID"],[2] = {},[3] = GemAmount}}
+            workspace.__THINGS.__REMOTES:FindFirstChild("bank deposit"):InvokeServer(unpack(args))
+            local args = {[1] = {[1] = MyBank[1]["BUID"],[2] = {},[3] = GemAmount}}
+            workspace.__THINGS.__REMOTES:FindFirstChild("bank withdraw"):InvokeServer(unpack(args))
+            warn("---Depositing And Withdrawing---")
+            print("Deposited And Withdrawed "..GemAmount.. " Gem")
+        end
+    end)
 end)
 
 Bank:addTextbox("Choose Time", "0", function(value)
@@ -355,6 +405,53 @@ IconChanger:addDropdown("Choose DarkMatter Pet", PetList, function(value)
     end
 end)
 
+local Dupe = Flury:addPage("Dupe", 5012544693)
+local Packets = Dupe:addSection("Packets")
+
+Packets:addButton("600 Ping", function(value)
+    getgenv().Packet = 50000
+    local PacketSended = 0
+
+function Crasher()
+    spawn(function()
+        Lib.Network.Fire('request world', "Spawn")
+        Lib.Network.Fire('performed teleport')
+        PacketSended = PacketSended + 1
+        print(tostring(PacketSended))
+
+        Lib.Network.Fire('request world', "Fantasy")
+        Lib.Network.Fire('performed teleport')
+        PacketSended = PacketSended + 1
+        print(tostring(PacketSended))
+
+        Lib.Network.Fire('request world', "Tech")
+        Lib.Network.Fire('performed teleport')
+        PacketSended = PacketSended + 1
+        print(tostring(PacketSended))
+
+        Lib.Network.Fire('request world', "Void")
+        Lib.Network.Fire('performed teleport')
+        PacketSended = PacketSended + 1
+        print(tostring(PacketSended))
+
+        Lib.Network.Fire('request world', "Axolot")
+        Lib.Network.Fire('performed teleport')
+        PacketSended = PacketSended + 1
+        print(tostring(PacketSended))
+
+        Lib.Network.Fire('request world', "Pixel")
+        Lib.Network.Fire('performed teleport')
+        PacketSended = PacketSended + 1
+        print(tostring(PacketSended))
+    end)
+end
+
+local PacketToSend = getgenv().Packet / 4
+for i = 8, PacketToSend do 
+    spawn(Crasher)
+end
+end)
+
 local Settings = Flury:addPage("Settings", 5012544693)
 local Theme = Settings:addSection("Theme")
 
@@ -380,6 +477,3 @@ Theme:addButton("Destroy Gui", function()
 end)
 
 Flury:SelectPage(Flury.pages[1], true)
-
-
-
