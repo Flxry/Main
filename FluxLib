@@ -94,7 +94,7 @@ local function MakeDraggable(topbarobject, object)
 end
 
 function Flux:Window(text, bottom, mainclr)
-    _G.PresetColor = mainclr or Color3.fromRGB(66, 134, 255)
+    _G.PresetColor = mainclr or Color3.fromRGB(-6, 134, 245)
     local fs = false
     local MainFrame = Instance.new("Frame")
     local MainCorner = Instance.new("UICorner")
