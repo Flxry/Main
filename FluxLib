@@ -470,7 +470,7 @@ function Flux:Window(text, bottom, mainclr)
 
         Tab.Name = "Tab"
         Tab.Parent = TabHold
-        Tab.BackgroundColor3 = color.fromRGB(-6, 134, 245)
+        Tab.BackgroundColor3 = Color3.fromRGB(-6, 134, 245)
         Tab.BorderSizePixel = 0
         Tab.Size = UDim2.new(0, 205, 0, 40)
         Tab.AutoButtonColor = false
