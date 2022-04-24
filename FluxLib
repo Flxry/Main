@@ -7,7 +7,7 @@ if game.CoreGui:FindFirstChild("MobTog") then
 end
 
 local Flux = {RainbowColorValue = 0, HueSelectionPosition = 0}
-_G.PresetColor = Color3.fromRGB(66, 134, 255)
+_G.PresetColor = Color3.fromRGB(-6, 134, 245)
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
 local RunService = game:GetService("RunService")
@@ -122,7 +122,7 @@ function Flux:Window(text, bottom, mainclr)
 
     LeftFrame.Name = "LeftFrame"
     LeftFrame.Parent = MainFrame
-    LeftFrame.BackgroundColor3 = Color3.fromRGB(47, 49, 54)
+    LeftFrame.BackgroundColor3 = Color3.fromRGB(28, 28, 28)
     LeftFrame.Size = UDim2.new(0, 205, 0, 484)
 
     LeftCorner.CornerRadius = UDim.new(0, 5)
@@ -159,7 +159,7 @@ function Flux:Window(text, bottom, mainclr)
     BottomText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     BottomText.BackgroundTransparency = 1.000
     BottomText.Position = UDim2.new(0.097560972, 0, 0.0889999792, 0)
-    BottomText.Size = UDim2.new(0, 113, 0, 28)
+    BottomText.Size = UDim2.new(0, 113, 0, 35)
     BottomText.Font = Enum.Font.Gotham
     BottomText.Text = bottom
     BottomText.TextColor3 = Color3.fromRGB(255, 255, 255)
