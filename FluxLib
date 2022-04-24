@@ -1,3 +1,4 @@
+print("yOOOO")
 if game.CoreGui:FindFirstChild("FluxLib") then
     game.CoreGui:FindFirstChild("FluxLib"):Destroy()
 end
