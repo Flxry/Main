@@ -964,7 +964,7 @@ function UILib.CreateWindow(libName, version, logoId)
                 TextBox.PlaceholderColor3 = Color3.fromRGB(24, 24, 24)
                 TextBox.Text = ""
                 TextBox.TextColor3 = Color3.fromRGB(0, 0, 0)
-                TextBox.TextSize = 13.000
+                TextBox.TextSize = 11.000
                 TextBox.PlaceholderText = textPlace
 
                 UICorner_2.CornerRadius = UDim.new(0, 5)
