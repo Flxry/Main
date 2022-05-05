@@ -67,7 +67,7 @@ GoldSection:Toggle("Auto Gold", Settings.AutoGold, function(isToggled)
     end)
 end)
 
-GoldSection:DropDown("Choose Amount", {1,2,3,4}, function(value)
+GoldSection:DropDown("Choose Amount", {1,2,3,4,5,6}, function(value)
     Settings.GoldAmount = value
 end)
 
@@ -113,7 +113,7 @@ RainbowSection:Toggle("Auto Rainbow", Settings.AutoRainbow, function(isToggled)
     end)
 end)
 
-RainbowSection:DropDown("Choose Amount", {1,2,3,4}, function(value)
+RainbowSection:DropDown("Choose Amount", {1,2,3,4,5,6}, function(value)
     Settings.RainbowAmount = value
 end)
 
