@@ -153,6 +153,8 @@ function MakeNotification(Text, Color)
     TweenPosition2:Play()
 
     TweenPosition2.Completed:Connect(function()
-        game.CoreGui.Notifications:Destroy()
+        if game.CoreGui:FindFirstChild("Notifications") then
+            game.CoreGui.Notifications:Destroy()
+        end
     end)
 end
