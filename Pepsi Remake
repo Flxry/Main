@@ -19,8 +19,8 @@ local library = {
 		background = Color3.fromRGB(15, 15, 15),
 		outerBorder = Color3.fromRGB(15, 15, 15),
 		innerBorder = Color3.fromRGB(255,255,255),
-		topGradient = Color3.fromRGB(35, 35, 35),
-		bottomGradient = Color3.fromRGB(29, 29, 29),
+		topGradient = Color3.fromRGB(51, 139, 255),
+		bottomGradient = Color3.fromRGB(51, 139, 255),
 		sectionBackground = Color3.fromRGB(35, 34, 34),
 		section = Color3.fromRGB(230, 230, 230),
 		otherElementText = Color3.fromRGB(129, 127, 129),
@@ -2023,8 +2023,8 @@ function library:CreateWindow(options, ...)
 							colored_toggleInner_ImageColor3[3] = (newStatus and "main") or "bottomGradient"
 							colored_toggleInner_ImageColor3[4] = (newStatus and 2.5) or nil
 							tweenService:Create(toggleInner, TweenInfo.new(0.35, library.configuration.easingStyle, library.configuration.easingDirection), {
-								BackgroundColor3 = Color3.fromRGB(51, 139, 255),
-								ImageColor3 = Color3.fromRGB(51, 139, 255)
+								BackgroundColor3 = (newStatus and darkenColor(library.colors.main, 1.5)) or library.colors.topGradient,
+								ImageColor3 = (newStatus and darkenColor(library.colors.main, 2.5)) or library.colors.bottomGradient
 							}):Play()
 							task.spawn(callback, newStatus, last_v)
 						end
