@@ -521,7 +521,7 @@ end) or function(...)
 	end
 	return unpack(x)
 end
-library.subs.Instance.new = Instance.new
+library.subs.Instance_new = Instance_new
 local playersservice = game:GetService("Players")
 local function getresolver(listt, filter, method, _)
 	local huo, args = type(filter), {}
