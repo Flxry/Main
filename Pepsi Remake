@@ -521,7 +521,7 @@ end) or function(...)
 	end
 	return unpack(x)
 end
-library.subs.Instance_new = Instance_new
+library.subs.Instance.new = Instance.new
 local playersservice = game:GetService("Players")
 local function getresolver(listt, filter, method, _)
 	local huo, args = type(filter), {}
@@ -778,12 +778,12 @@ end
 do
 	do
 		local function NewOption(TextStr, Order, Parent)
-			local Option = Instance_new("Frame")
-			local BBorder = Instance_new("Frame")
-			local Inner_2 = Instance_new("Frame")
-			local Border_2 = Instance_new("Frame")
-			local Text = Instance_new("TextLabel")
-			local Button = Instance_new("TextButton")
+			local Option = Instance.new("Frame")
+			local BBorder = Instance.new("Frame")
+			local Inner_2 = Instance.new("Frame")
+			local Border_2 = Instance.new("Frame")
+			local Text = Instance.new("TextLabel")
+			local Button = Instance.new("TextButton")
 			Option.AnchorPoint = Vector2.new(0, 0.5)
 			Option.BackgroundColor3 = library.colors.background
 			colored[1 + #colored] = {Option, "BackgroundColor3", "background"}
@@ -988,27 +988,27 @@ do
 			else
 				PromptData, self = self, library
 			end
-			local PromptEvent = Instance_new("BindableEvent")
+			local PromptEvent = Instance.new("BindableEvent")
 			local PromptObj = {
 				OnSelect = PromptEvent.Event,
 				Active = true,
 				SelectedEvent = PromptEvent
 			}
-			local ChoicePopup = Instance_new("Frame")
-			local Buttons = Instance_new("ScrollingFrame")
-			local Title = Instance_new("TextLabel")
-			local Description = Instance_new("TextLabel")
+			local ChoicePopup = Instance.new("Frame")
+			local Buttons = Instance.new("ScrollingFrame")
+			local Title = Instance.new("TextLabel")
+			local Description = Instance.new("TextLabel")
 			local DoClose = PromptData.CloseButton
 			DoClose = (DoClose == nil) or (DoClose == true) or DoClose or nil
-			local Close = DoClose and Instance_new("ImageButton")
+			local Close = DoClose and Instance.new("ImageButton")
 			do
-				local Border = Instance_new("Frame")
-				local Inner = Instance_new("Frame")
-				local InnerBorder = Instance_new("Frame")
-				local Bar = Instance_new("Frame")
-				local Splitter = Instance_new("Frame")
-				local ButtonBar = Instance_new("Frame")
-				local UIListLayout = Instance_new("UIListLayout")
+				local Border = Instance.new("Frame")
+				local Inner = Instance.new("Frame")
+				local InnerBorder = Instance.new("Frame")
+				local Bar = Instance.new("Frame")
+				local Splitter = Instance.new("Frame")
+				local ButtonBar = Instance.new("Frame")
+				local UIListLayout = Instance.new("UIListLayout")
 				ChoicePopup.AnchorPoint = Vector2.new(0.5, 0.5)
 				ChoicePopup.BackgroundColor3 = library.colors.background
 				colored[1 + #colored] = {ChoicePopup, "BackgroundColor3", "background"}
@@ -1530,20 +1530,20 @@ function library:CreateWindow(options, ...)
 	if windowName and #windowName > 0 and library.WorkspaceName == "Pepsi Lib" then
 		library.WorkspaceName = convertfilename(windowName, "Pepsi Lib")
 	end
-	local pepsiLibrary = Instance_new("ScreenGui")
-
-	local main = Instance_new("Frame")
-	local mainBorder = Instance_new("Frame")
-	local tabSlider = Instance_new("Frame")
-	local innerMain = Instance_new("Frame")
-	local innerMainBorder = Instance_new("Frame")
-	local innerBackdrop = Instance_new("ImageLabel")
-	local innerMainHolder = Instance_new("Frame")
-	local tabsHolder = Instance_new("ImageLabel")
-	local tabHolderList = Instance_new("UIListLayout")
-	local tabHolderPadding = Instance_new("UIPadding")
-	local headline = Instance_new("TextLabel")
-	local splitter = Instance_new("TextLabel")
+	local pepsiLibrary = Instance.new("ScreenGui")
+	MainScreenGui = pepsiLibrary
+	local main = Instance.new("Frame")
+	local mainBorder = Instance.new("Frame")
+	local tabSlider = Instance.new("Frame")
+	local innerMain = Instance.new("Frame")
+	local innerMainBorder = Instance.new("Frame")
+	local innerBackdrop = Instance.new("ImageLabel")
+	local innerMainHolder = Instance.new("Frame")
+	local tabsHolder = Instance.new("ImageLabel")
+	local tabHolderList = Instance.new("UIListLayout")
+	local tabHolderPadding = Instance.new("UIPadding")
+	local headline = Instance.new("TextLabel")
+	local splitter = Instance.new("TextLabel")
 	local submenuOpen = nil
 	library.globals["__Window" .. options.Name] = {
 		submenuOpen = submenuOpen
@@ -1716,15 +1716,15 @@ function library:CreateWindow(options, ...)
 		local tabName = options.Name or "Unnamed Tab"
 		options.Name = tabName
 		windowFunctions.tabCount = windowFunctions.tabCount + 1
-		local newTab = Instance_new((image and "ImageButton") or "TextButton")
-		local newTabHolder = Instance_new("Frame")
+		local newTab = Instance.new((image and "ImageButton") or "TextButton")
+		local newTabHolder = Instance.new("Frame")
 		library.globals["__Window" .. windowName].newTabHolder = newTabHolder
-		local left = Instance_new("ScrollingFrame")
-		local leftList = Instance_new("UIListLayout")
-		local leftPadding = Instance_new("UIPadding")
-		local right = Instance_new("ScrollingFrame")
-		local rightList = Instance_new("UIListLayout")
-		local rightPadding = Instance_new("UIPadding")
+		local left = Instance.new("ScrollingFrame")
+		local leftList = Instance.new("UIListLayout")
+		local leftPadding = Instance.new("UIPadding")
+		local right = Instance.new("ScrollingFrame")
+		local rightList = Instance.new("UIListLayout")
+		local rightPadding = Instance.new("UIPadding")
 		newTab.Name = removeSpaces((tabName and tostring(tabName):lower() or "???") .. "Tab")
 		newTab.Parent = tabsHolder
 		newTab.BackgroundTransparency = 1
@@ -1838,14 +1838,14 @@ function library:CreateWindow(options, ...)
 			options = (options and type(options) == "string" and resolvevararg("Tab", options, ...)) or options
 			local sectionName, holderSide = options.Name or "Unnamed Section", options.Side
 			options.Name = sectionName
-			local newSection = Instance_new("Frame")
-			local newSectionBorder = Instance_new("Frame")
-			local insideBorderHider = Instance_new("Frame")
-			local outsideBorderHider = Instance_new("Frame")
-			local sectionHolder = Instance_new("Frame")
-			local sectionList = Instance_new("UIListLayout")
-			local sectionPadding = Instance_new("UIPadding")
-			local sectionHeadline = Instance_new("TextLabel")
+			local newSection = Instance.new("Frame")
+			local newSectionBorder = Instance.new("Frame")
+			local insideBorderHider = Instance.new("Frame")
+			local outsideBorderHider = Instance.new("Frame")
+			local sectionHolder = Instance.new("Frame")
+			local sectionList = Instance.new("UIListLayout")
+			local sectionPadding = Instance.new("UIPadding")
+			local sectionHeadline = Instance.new("TextLabel")
 			colorpickerconflicts[1 + #colorpickerconflicts] = insideBorderHider
 			colorpickerconflicts[1 + #colorpickerconflicts] = outsideBorderHider
 			colorpickerconflicts[1 + #colorpickerconflicts] = sectionHeadline
@@ -1925,14 +1925,14 @@ function library:CreateWindow(options, ...)
 				if elements[flagName] ~= nil then
 					warn(debug.traceback("Warning! Re-used flag '" .. flagName .. "'", 3))
 				end
-				local newToggle = Instance_new("Frame")
-				local toggle = Instance_new("ImageLabel")
-				local toggleInner = Instance_new("ImageLabel")
-				local toggleButton = Instance_new("TextButton")
-				local toggleHeadline = Instance_new("TextLabel")
-				local keybindPositioner = Instance_new("Frame")
-				local keybindList = Instance_new("UIListLayout")
-				local keybindButton = Instance_new("TextButton")
+				local newToggle = Instance.new("Frame")
+				local toggle = Instance.new("ImageLabel")
+				local toggleInner = Instance.new("ImageLabel")
+				local toggleButton = Instance.new("TextButton")
+				local toggleHeadline = Instance.new("TextLabel")
+				local keybindPositioner = Instance.new("Frame")
+				local keybindList = Instance.new("UIListLayout")
+				local keybindButton = Instance.new("TextButton")
 				local lockedup = options.Locked
 				newToggle.Name = removeSpaces((toggleName and toggleName:lower() or "???") .. "Toggle")
 				newToggle.Parent = sectionHolder
@@ -2532,7 +2532,7 @@ function library:CreateWindow(options, ...)
 					local buttonName, callback = assert(options.Name, "Missing Name for new button."), options.Callback or (warn("AddButton missing callback. Name:", options.Name or "No Name", debug.traceback("")) and nil) or function()
 					end
 					local lockedup = options.Locked
-					local realButton = Instance_new("TextButton")
+					local realButton = Instance.new("TextButton")
 					realButton.Name = "realButton"
 					realButton.BackgroundColor3 = Color3.new(1, 1, 1)
 					realButton.BackgroundTransparency = 1
@@ -2548,9 +2548,9 @@ function library:CreateWindow(options, ...)
 					if newSection.Parent.AbsoluteSize.X < offset + textsize + 8 then
 						offset, fram = 0, nil
 					end
-					local newButton = fram or Instance_new("Frame")
+					local newButton = fram or Instance.new("Frame")
 					fram = newButton
-					local button = Instance_new("ImageLabel")
+					local button = Instance.new("ImageLabel")
 					newButton.Name = removeSpaces((buttonName and buttonName:lower() or "???") .. "Holder")
 					newButton.Parent = sectionHolder
 					newButton.BackgroundColor3 = Color3.new(1, 1, 1)
@@ -2571,7 +2571,7 @@ function library:CreateWindow(options, ...)
 					button.ImageColor3 = library.colors.bottomGradient
 					local colored_button_ImageColor3 = {button, "ImageColor3", "bottomGradient"}
 					colored[1 + #colored] = colored_button_ImageColor3
-					local buttonInner = Instance_new("ImageLabel")
+					local buttonInner = Instance.new("ImageLabel")
 					buttonInner.Name = "buttonInner"
 					buttonInner.Parent = button
 					buttonInner.Active = true
@@ -2800,11 +2800,11 @@ function library:CreateWindow(options, ...)
 					warn(debug.traceback("Warning! Re-used flag '" .. flagName .. "'", 3))
 				end
 				local requiredtype = options.Type
-				local newTextbox = Instance_new("Frame")
-				local textbox = Instance_new("ImageLabel")
-				local textboxInner = Instance_new("ImageLabel")
-				local realTextbox = Instance_new("TextBox")
-				local textboxHeadline = Instance_new("TextLabel")
+				local newTextbox = Instance.new("Frame")
+				local textbox = Instance.new("ImageLabel")
+				local textboxInner = Instance.new("ImageLabel")
+				local realTextbox = Instance.new("TextBox")
+				local textboxHeadline = Instance.new("TextLabel")
 				newTextbox.Name = removeSpaces((textboxName and textboxName:lower()) or "???") .. "Holder"
 				newTextbox.Parent = sectionHolder
 				newTextbox.BackgroundColor3 = Color3.new(1, 1, 1)
@@ -3057,11 +3057,11 @@ function library:CreateWindow(options, ...)
 				end
 				library.keyHandler = keyHandler
 				local keyHandler = options.KeyNames or keyHandler
-				local newKeybind = Instance_new("Frame")
-				local keybindHeadline = Instance_new("TextLabel")
-				local keybindPositioner = Instance_new("Frame")
-				local keybindList = Instance_new("UIListLayout")
-				local keybindButton = Instance_new("TextButton")
+				local newKeybind = Instance.new("Frame")
+				local keybindHeadline = Instance.new("TextLabel")
+				local keybindPositioner = Instance.new("Frame")
+				local keybindList = Instance.new("UIListLayout")
+				local keybindButton = Instance.new("TextButton")
 				local bindedKey = presetKeybind
 				local justBinded = false
 				local keyName = (presetKeybind and tostring(presetKeybind):gsub("Enum.KeyCode.", "") or "")
@@ -3307,10 +3307,10 @@ function library:CreateWindow(options, ...)
 				if elements[flag] ~= nil then
 					warn(debug.traceback("Warning! Re-used flag '" .. flag .. "'", 3))
 				end
-				local newLabel = Instance_new("Frame")
-				local labelHeadline = Instance_new("TextLabel")
-				local labelPositioner = Instance_new("Frame")
-				local labelButton = Instance_new("TextButton")
+				local newLabel = Instance.new("Frame")
+				local labelHeadline = Instance.new("TextLabel")
+				local labelPositioner = Instance.new("Frame")
+				local labelButton = Instance.new("TextButton")
 				newLabel.Name = "newLabel"
 				newLabel.Parent = sectionHolder
 				newLabel.BackgroundColor3 = Color3.new(1, 1, 1)
@@ -3411,11 +3411,11 @@ function library:CreateWindow(options, ...)
 					return (sliderName or "???") .. ": " .. str
 				end
 				local usetextbox = options.Textbox or options.InputBox or options.CustomInput
-				local newSlider = Instance_new("Frame")
-				local slider = Instance_new("ImageLabel")
-				local sliderInner = Instance_new("ImageLabel")
-				local sliderColored = Instance_new("ImageLabel")
-				local sliderHeadline = Instance_new("TextLabel")
+				local newSlider = Instance.new("Frame")
+				local slider = Instance.new("ImageLabel")
+				local sliderInner = Instance.new("ImageLabel")
+				local sliderColored = Instance.new("ImageLabel")
+				local sliderHeadline = Instance.new("TextLabel")
 				local startingValue = presetValue or minValue
 				local sliderDragging = false
 				newSlider.Name = "newSlider"
@@ -3519,9 +3519,9 @@ function library:CreateWindow(options, ...)
 					if type(usetextbox) ~= "table" then
 						usetextbox = options
 					end
-					local textbox = Instance_new("ImageLabel")
-					local textboxInner = Instance_new("ImageLabel")
-					realTextbox = Instance_new("TextBox")
+					local textbox = Instance.new("ImageLabel")
+					local textboxInner = Instance.new("ImageLabel")
+					realTextbox = Instance.new("TextBox")
 					textbox.Name = "textbox"
 					textbox.Parent = newSlider
 					textbox.Active = true
@@ -3783,16 +3783,16 @@ function library:CreateWindow(options, ...)
 				if elements[flagName] ~= nil then
 					warn(debug.traceback("Warning! Re-used flag '" .. flagName .. "'", 3))
 				end
-				local newDropdown = Instance_new("Frame")
-				local dropdown = Instance_new("ImageLabel")
-				local dropdownInner = Instance_new("ImageLabel")
-				local dropdownToggle = Instance_new("ImageButton")
-				local dropdownSelection = Instance_new("TextBox")
-				local dropdownHeadline = Instance_new("TextLabel")
-				local dropdownHolderFrame = Instance_new("ImageLabel")
-				local dropdownHolderInner = Instance_new("ImageLabel")
-				local realDropdownHolder = Instance_new("ScrollingFrame")
-				local realDropdownHolderList = Instance_new("UIListLayout")
+				local newDropdown = Instance.new("Frame")
+				local dropdown = Instance.new("ImageLabel")
+				local dropdownInner = Instance.new("ImageLabel")
+				local dropdownToggle = Instance.new("ImageButton")
+				local dropdownSelection = Instance.new("TextBox")
+				local dropdownHeadline = Instance.new("TextLabel")
+				local dropdownHolderFrame = Instance.new("ImageLabel")
+				local dropdownHolderInner = Instance.new("ImageLabel")
+				local realDropdownHolder = Instance.new("ScrollingFrame")
+				local realDropdownHolderList = Instance.new("UIListLayout")
 				local dropdownEnabled = false
 				local resolvelist = getresolver(listt, options.Filter)
 				local list = resolvelist()
@@ -3997,8 +3997,8 @@ function library:CreateWindow(options, ...)
 						if not filter or tostring(v):lower():find(dropdownSelection.Text:lower(), 1, not options.RegEx) then
 							optionCount = optionCount + 1
 							UpdateDropdownHolder()
-							local newOption = Instance_new("ImageLabel")
-							local optionButton = Instance_new("TextButton")
+							local newOption = Instance.new("ImageLabel")
+							local optionButton = Instance.new("TextButton")
 							if selectedOption == v then
 								selectedObjects[1] = newOption
 								selectedObjects[2] = optionButton
@@ -4442,16 +4442,16 @@ function library:CreateWindow(options, ...)
 						warn(debug.traceback("Warning! Re-used flag '" .. flagName .. "'", 3))
 					end
 					local designerpersists = options.Desginer
-					local newDropdown = Instance_new("Frame")
-					local dropdown = Instance_new("ImageLabel")
-					local dropdownInner = Instance_new("ImageLabel")
-					local dropdownToggle = Instance_new("ImageButton")
-					local dropdownSelection = Instance_new("TextBox")
-					local dropdownHeadline = Instance_new("TextLabel")
-					local dropdownHolderFrame = Instance_new("ImageLabel")
-					local dropdownHolderInner = Instance_new("ImageLabel")
-					local realDropdownHolder = Instance_new("ScrollingFrame")
-					local realDropdownHolderList = Instance_new("UIListLayout")
+					local newDropdown = Instance.new("Frame")
+					local dropdown = Instance.new("ImageLabel")
+					local dropdownInner = Instance.new("ImageLabel")
+					local dropdownToggle = Instance.new("ImageButton")
+					local dropdownSelection = Instance.new("TextBox")
+					local dropdownHeadline = Instance.new("TextLabel")
+					local dropdownHolderFrame = Instance.new("ImageLabel")
+					local dropdownHolderInner = Instance.new("ImageLabel")
+					local realDropdownHolder = Instance.new("ScrollingFrame")
+					local realDropdownHolderList = Instance.new("UIListLayout")
 					local dropdownEnabled = false
 					if not isfolder("./Pepsi Lib") then
 						makefolder("./Pepsi Lib")
@@ -4672,8 +4672,8 @@ function library:CreateWindow(options, ...)
 							if not filter or tostring(v):lower():find(dropdownSelection.Text:lower(), 1, true) then
 								optionCount = optionCount + 1
 								UpdateDropdownHolder()
-								local newOption = Instance_new("ImageLabel")
-								local optionButton = Instance_new("TextButton")
+								local newOption = Instance.new("ImageLabel")
+								local optionButton = Instance.new("TextButton")
 								if selectedOption == v or not selectedObjects[1] or not selectedObjects[2] then
 									selectedObjects[1] = newOption
 									selectedObjects[2] = optionButton
@@ -5051,7 +5051,7 @@ function library:CreateWindow(options, ...)
 								Callback = loadstuff
 							}} do
 							local buttonName, callback = options.Name, options.Callback
-							local realButton = Instance_new("TextButton")
+							local realButton = Instance.new("TextButton")
 							realButton.Name = "realButton"
 							realButton.BackgroundColor3 = Color3.new(1, 1, 1)
 							realButton.BackgroundTransparency = 1
@@ -5066,9 +5066,9 @@ function library:CreateWindow(options, ...)
 							if newSection.Parent.AbsoluteSize.X < offset + textsize + 8 then
 								offset, fram = 0, nil
 							end
-							local newButton = fram or Instance_new("Frame")
+							local newButton = fram or Instance.new("Frame")
 							fram = newButton
-							local button = Instance_new("ImageLabel")
+							local button = Instance.new("ImageLabel")
 							newButton.Name = removeSpaces((buttonName and buttonName:lower() or "???") .. "Holder")
 							newButton.Parent = sectionHolder
 							newButton.BackgroundColor3 = Color3.new(1, 1, 1)
@@ -5089,7 +5089,7 @@ function library:CreateWindow(options, ...)
 							button.ImageColor3 = library.colors.bottomGradient
 							local colored_button_ImageColor3 = {button, "ImageColor3", "bottomGradient"}
 							colored[1 + #colored] = colored_button_ImageColor3
-							local buttonInner = Instance_new("ImageLabel")
+							local buttonInner = Instance.new("ImageLabel")
 							buttonInner.Name = "buttonInner"
 							buttonInner.Parent = button
 							buttonInner.Active = true
@@ -5253,16 +5253,16 @@ function library:CreateWindow(options, ...)
 				if elements[flagName] ~= nil then
 					warn(debug.traceback("Warning! Re-used flag '" .. flagName .. "'", 3))
 				end
-				local newDropdown = Instance_new("Frame")
-				local dropdown = Instance_new("ImageLabel")
-				local dropdownInner = Instance_new("ImageLabel")
-				local dropdownToggle = Instance_new("ImageButton")
-				local dropdownSelection = Instance_new("TextLabel")
-				local dropdownHeadline = Instance_new("TextLabel")
-				local dropdownHolderFrame = Instance_new("ImageLabel")
-				local dropdownHolderInner = Instance_new("ImageLabel")
-				local realDropdownHolder = Instance_new("ScrollingFrame")
-				local realDropdownHolderList = Instance_new("UIListLayout")
+				local newDropdown = Instance.new("Frame")
+				local dropdown = Instance.new("ImageLabel")
+				local dropdownInner = Instance.new("ImageLabel")
+				local dropdownToggle = Instance.new("ImageButton")
+				local dropdownSelection = Instance.new("TextLabel")
+				local dropdownHeadline = Instance.new("TextLabel")
+				local dropdownHolderFrame = Instance.new("ImageLabel")
+				local dropdownHolderInner = Instance.new("ImageLabel")
+				local realDropdownHolder = Instance.new("ScrollingFrame")
+				local realDropdownHolderList = Instance.new("UIListLayout")
 				local dropdownEnabled = false
 				local multiselect = options.MultiSelect or options.Multi or options.Multiple
 				local addcallback = options.ItemAdded or options.AddedCallback
@@ -5519,8 +5519,8 @@ function library:CreateWindow(options, ...)
 					realDropdownHolderList.Parent = realDropdownHolder
 					for _, v in next, optionsTable do
 						optionCount = optionCount + 1
-						local newOption = Instance_new("ImageLabel")
-						local optionButton = Instance_new("TextButton")
+						local newOption = Instance.new("ImageLabel")
+						local optionButton = Instance.new("TextButton")
 						if selectedOption == v then
 							selectedObjects[1] = newOption
 							selectedObjects[2] = optionButton
@@ -5900,27 +5900,27 @@ function library:CreateWindow(options, ...)
 					presetColor = Color3.new(1, 1, 1)
 					rainbowColorMode = true
 				end
-				local newColorPicker = Instance_new("Frame")
-				local colorPicker = Instance_new("ImageLabel")
-				local colorPickerInner = Instance_new("ImageLabel")
-				local colorPickerHeadline = Instance_new("TextLabel")
-				local colorPickerButton = Instance_new("TextButton")
-				local colorPickerHolderFrame = Instance_new("ImageLabel")
-				local colorPickerHolderInner = Instance_new("ImageLabel")
-				local color = Instance_new("ImageLabel")
-				local selectorColor = Instance_new("Frame")
-				local hue = Instance_new("ImageLabel")
-				local hueGradient = Instance_new("UIGradient")
-				local selectorHue = Instance_new("Frame")
-				local randomColor = Instance_new("ImageLabel")
-				local randomColorInner = Instance_new("ImageLabel")
-				local randomColorButton = Instance_new("ImageButton")
-				local hexInputBox = Instance_new("TextBox")
-				local hexInput = Instance_new("ImageLabel")
-				local hexInputInner = Instance_new("ImageLabel")
-				local rainbow = Instance_new("ImageLabel")
-				local rainbowInner = Instance_new("ImageLabel")
-				local rainbowButton = Instance_new("ImageButton")
+				local newColorPicker = Instance.new("Frame")
+				local colorPicker = Instance.new("ImageLabel")
+				local colorPickerInner = Instance.new("ImageLabel")
+				local colorPickerHeadline = Instance.new("TextLabel")
+				local colorPickerButton = Instance.new("TextButton")
+				local colorPickerHolderFrame = Instance.new("ImageLabel")
+				local colorPickerHolderInner = Instance.new("ImageLabel")
+				local color = Instance.new("ImageLabel")
+				local selectorColor = Instance.new("Frame")
+				local hue = Instance.new("ImageLabel")
+				local hueGradient = Instance.new("UIGradient")
+				local selectorHue = Instance.new("Frame")
+				local randomColor = Instance.new("ImageLabel")
+				local randomColorInner = Instance.new("ImageLabel")
+				local randomColorButton = Instance.new("ImageButton")
+				local hexInputBox = Instance.new("TextBox")
+				local hexInput = Instance.new("ImageLabel")
+				local hexInputInner = Instance.new("ImageLabel")
+				local rainbow = Instance.new("ImageLabel")
+				local rainbowInner = Instance.new("ImageLabel")
+				local rainbowButton = Instance.new("ImageButton")
 				local startingColor = presetColor or Color3.new(1, 1, 1)
 				local colorPickerEnabled = false
 				local colorH, colorS, colorV = 1, 1, 1
