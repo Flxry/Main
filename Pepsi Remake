@@ -229,7 +229,7 @@ library.subs.ResolveID = resolveid
 library.resolvercache = resolvercache
 local colored, colors = library.colored, library.colors
 local tweenService = game:GetService("TweenService")
-local updatecolors, MainScreenGui = game:GetService("CoreGui")
+local updatecolors, MainScreenGui = nil
 do
 	local MayGC = 0
 	spawn(function()
@@ -1531,7 +1531,7 @@ function library:CreateWindow(options, ...)
 		library.WorkspaceName = convertfilename(windowName, "Pepsi Lib")
 	end
 	local pepsiLibrary = Instance_new("ScreenGui")
-	MainScreenGui = pepsiLibrary
+
 	local main = Instance_new("Frame")
 	local mainBorder = Instance_new("Frame")
 	local tabSlider = Instance_new("Frame")
