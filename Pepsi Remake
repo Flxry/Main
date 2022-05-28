@@ -229,7 +229,7 @@ library.subs.ResolveID = resolveid
 library.resolvercache = resolvercache
 local colored, colors = library.colored, library.colors
 local tweenService = game:GetService("TweenService")
-local updatecolors, MainScreenGui = nil
+local updatecolors, MainScreenGui = game:GetService("CoreGui")
 do
 	local MayGC = 0
 	spawn(function()
