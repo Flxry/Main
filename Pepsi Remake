@@ -2562,7 +2562,7 @@ function library:CreateWindow(options, ...)
 					button.BackgroundColor3 = library.colors.topGradient
 					local colored_button_BackgroundColor3 = {button, "BackgroundColor3", "topGradient"}
 					colored[1 + #colored] = colored_button_BackgroundColor3
-					button.BorderColor3 = library.colors.elementBorder
+					button.BorderColor3 = Color3.fromRGB(51, 139, 255)
 					colored[1 + #colored] = {button, "BorderColor3", "elementBorder"}
 					button.Position = UDim2.new(0.031, offset, 0.166)
 					button.Selectable = true
@@ -3528,7 +3528,7 @@ function library:CreateWindow(options, ...)
 					textbox.BackgroundColor3 = library.colors.topGradient
 					local colored_textbox_BackgroundColor3 = {textbox, "BackgroundColor3", "topGradient"}
 					colored[1 + #colored] = colored_textbox_BackgroundColor3
-					textbox.BorderColor3 = library.colors.elementBorder
+					textbox.BorderColor3 = Color3.fromRGB(51, 139, 255)
 					colored[1 + #colored] = {textbox, "BorderColor3", "elementBorder"}
 					textbox.Position = UDim2.new(1, -54, 0.48)
 					textbox.Selectable = true
@@ -3826,7 +3826,7 @@ function library:CreateWindow(options, ...)
 				dropdown.BackgroundColor3 = library.colors.topGradient
 				local colored_dropdown_BackgroundColor3 = {dropdown, "BackgroundColor3", "topGradient"}
 				colored[1 + #colored] = colored_dropdown_BackgroundColor3
-				dropdown.BorderColor3 = library.colors.elementBorder
+				dropdown.BorderColor3 = Color3.fromRGB(51, 139, 255)
 				colored[1 + #colored] = {dropdown, "BorderColor3", "elementBorder"}
 				dropdown.Position = UDim2.fromScale(0.027, 0.45)
 				dropdown.Selectable = true
@@ -4501,7 +4501,7 @@ function library:CreateWindow(options, ...)
 					dropdown.BackgroundColor3 = library.colors.topGradient
 					local colored_dropdown_BackgroundColor3 = {dropdown, "BackgroundColor3", "topGradient"}
 					colored[1 + #colored] = colored_dropdown_BackgroundColor3
-					dropdown.BorderColor3 = library.colors.elementBorder
+					dropdown.BorderColor3 = Color3.fromRGB(51, 139, 255)
 					colored[1 + #colored] = {dropdown, "BorderColor3", "elementBorder"}
 					dropdown.Position = UDim2.fromScale(0.027, 0.45)
 					dropdown.Selectable = true
@@ -5296,7 +5296,7 @@ function library:CreateWindow(options, ...)
 				dropdown.BackgroundColor3 = library.colors.topGradient
 				local colored_dropdown_BackgroundColor3 = {dropdown, "BackgroundColor3", "topGradient"}
 				colored[1 + #colored] = colored_dropdown_BackgroundColor3
-				dropdown.BorderColor3 = library.colors.elementBorder
+				dropdown.BorderColor3 = Color3.fromRGB(51, 139, 255)
 				colored[1 + #colored] = {dropdown, "BorderColor3", "elementBorder"}
 				dropdown.Position = UDim2.fromScale(0.027, 0.45)
 				dropdown.Selectable = true
