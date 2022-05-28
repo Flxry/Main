@@ -1061,7 +1061,7 @@ do
 				Splitter.Size = UDim2.new(1, 0, 0, 1)
 				Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 				Title.BackgroundTransparency = 1
-				Title.Font = Enum.Font.Code
+				Title.Font = Enum.Font.GothamBold
 				Title.FontSize = Enum.FontSize.Size18
 				Title.Parent = InnerBorder
 				Title.Position = UDim2.new(0, 6, 0, 4)
@@ -1073,7 +1073,7 @@ do
 				Title.TextXAlignment = Enum.TextXAlignment.Left
 				Description.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 				Description.BackgroundTransparency = 1
-				Description.Font = Enum.Font.Code
+				Description.Font = Enum.Font.GothamBold
 				Description.FontSize = Enum.FontSize.Size14
 				Description.Name = "Description"
 				Description.Parent = InnerBorder
@@ -1372,7 +1372,7 @@ do
 			Border_2.Size = UDim2.new(1, 0, 1, 0)
 			Text.AnchorPoint = Vector2.new(0, 0.5)
 			Text.BackgroundTransparency = 1
-			Text.Font = Enum.Font.Code
+			Text.Font = Enum.Font.GothamBold
 			Text.FontSize = Enum.FontSize.Size14
 			Text.Name = "Text"
 			Text.Parent = Border_2
@@ -1548,7 +1548,7 @@ function library:CreateWindow(options, ...)
 	library.globals["__Window" .. options.Name] = {
 		submenuOpen = submenuOpen
 	}
-	pepsiLibrary.Name = "Pepsi UI Library"
+	pepsiLibrary.Name = "Pepsi"
 	pepsiLibrary.Parent = library.gui_parent
 	pepsiLibrary.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	pepsiLibrary.DisplayOrder = 10
@@ -1648,7 +1648,7 @@ function library:CreateWindow(options, ...)
 	splitter.BackgroundTransparency = 1
 	splitter.LayoutOrder = 2
 	splitter.Size = UDim2:new(6, 1)
-	splitter.Font = Enum.Font.Code
+	splitter.Font = Enum.Font.GothamBold
 	splitter.Text = "|"
 	splitter.TextColor3 = library.colors.tabText
 	colored[1 + #colored] = {splitter, "TextColor3", "tabText"}
@@ -2392,8 +2392,8 @@ function library:CreateWindow(options, ...)
 						colored_toggleInner_ImageColor3[4] = 1 + (colored_toggleInner_ImageColor3[4] or 1)
 					end
 					tweenService:Create(toggleInner, TweenInfo.new(0.35, library.configuration.easingStyle, library.configuration.easingDirection), {
-						BackgroundColor3 = (boolstatus and darkenColor(library.colors.main, colored_toggleInner_BackgroundColor3[4])) or library.colors.topGradient,
-						ImageColor3 = (boolstatus and darkenColor(library.colors.main, colored_toggleInner_ImageColor3[4])) or library.colors.bottomGradient
+						BackgroundColor3 = (boolstatus and Color3.fromRGB(51, 139, 255)) or library.colors.topGradient,
+						ImageColor3 = (boolstatus and Color3.fromRGB(51, 139, 255)) or library.colors.bottomGradient
 					}):Play()
 					colored_toggleHeadline_TextColor3[4] = (lockedup and 2.5) or nil
 					tweenService:Create(toggleHeadline, TweenInfo.new(0.35, library.configuration.easingStyle, library.configuration.easingDirection), {
@@ -2538,7 +2538,7 @@ function library:CreateWindow(options, ...)
 					realButton.BackgroundTransparency = 1
 					realButton.Size = UDim2.fromScale(1, 1)
 					realButton.ZIndex = 5
-					realButton.Font = Enum.Font.Code
+					realButton.Font = Enum.Font.GothamBold
 					realButton.Text = (buttonName and tostring(buttonName)) or "???"
 					realButton.TextColor3 = library.colors.elementText
 					local colored_realButton_TextColor3 = {realButton, "TextColor3", "elementText"}
@@ -2816,7 +2816,7 @@ function library:CreateWindow(options, ...)
 				textbox.BackgroundColor3 = library.colors.topGradient
 				local colored_textbox_BackgroundColor3 = {textbox, "BackgroundColor3", "topGradient"}
 				colored[1 + #colored] = colored_textbox_BackgroundColor3
-				textbox.BorderColor3 = library.colors.elementBorder
+				textbox.BorderColor3 = Color3.fromRGB(51, 139, 255)
 				colored[1 + #colored] = {textbox, "BorderColor3", "elementBorder"}
 				textbox.Position = UDim2.fromScale(0.031, 0.48)
 				textbox.Selectable = true
@@ -2857,7 +2857,7 @@ function library:CreateWindow(options, ...)
 				realTextbox.Position = UDim2.new(0.0295485705)
 				realTextbox.Size = UDim2.fromScale(0.97, 1)
 				realTextbox.ZIndex = 5
-				realTextbox.Font = Enum.Font.Code
+				realTextbox.Font = Enum.Font.GothamBold
 				realTextbox.LineHeight = 1.15
 				realTextbox.Text = tostring(presetValue)
 				realTextbox.TextColor3 = library.colors.otherElementText
@@ -2890,7 +2890,7 @@ function library:CreateWindow(options, ...)
 				textboxHeadline.Selectable = true
 				textboxHeadline.Size = UDim2.fromOffset(206, 20)
 				textboxHeadline.ZIndex = 5
-				textboxHeadline.Font = Enum.Font.Code
+				textboxHeadline.Font = Enum.Font.GothamBold
 				textboxHeadline.LineHeight = 1.15
 				textboxHeadline.Text = (textboxName and tostring(textboxName)) or "???"
 				textboxHeadline.TextColor3 = library.colors.elementText
@@ -3076,7 +3076,7 @@ function library:CreateWindow(options, ...)
 				keybindHeadline.BackgroundTransparency = 1
 				keybindHeadline.Position = UDim2.fromScale(0.031, 0.165842161)
 				keybindHeadline.Size = UDim2.fromOffset(215, 12)
-				keybindHeadline.Font = Enum.Font.Code
+				keybindHeadline.Font = Enum.Font.GothamBold
 				keybindHeadline.Text = (keybindName and tostring(keybindName)) or "???"
 				keybindHeadline.TextColor3 = library.colors.elementText
 				colored[1 + #colored] = {keybindHeadline, "TextColor3", "elementText"}
@@ -3102,7 +3102,7 @@ function library:CreateWindow(options, ...)
 				keybindButton.Position = UDim2.fromScale(0.598130822, 0.184210524)
 				keybindButton.Selectable = false
 				keybindButton.Size = UDim2.fromOffset(46, 12)
-				keybindButton.Font = Enum.Font.Code
+				keybindButton.Font = Enum.Font.GothamBold
 				keybindButton.Text = (presetKeybind and tostring(presetKeybind):gsub("Enum.KeyCode.", "") or "[NONE]")
 				keybindButton.TextColor3 = library.colors.otherElementText
 				local colored_keybindButton_TextColor3 = {keybindButton, "TextColor3", "otherElementText"}
@@ -3322,7 +3322,7 @@ function library:CreateWindow(options, ...)
 				labelHeadline.BackgroundTransparency = 1
 				labelHeadline.Position = UDim2.fromScale(0.031, 0.165842161)
 				labelHeadline.Size = UDim2.fromOffset(215, 12)
-				labelHeadline.Font = Enum.Font.Code
+				labelHeadline.Font = Enum.Font.GothamBold
 				labelHeadline.Text = (labelName and tostring(labelName)) or "Empty Text"
 				labelHeadline.TextColor3 = library.colors.elementText
 				colored[1 + #colored] = {labelHeadline, "TextColor3", "elementText"}
@@ -3559,7 +3559,7 @@ function library:CreateWindow(options, ...)
 					realTextbox.Size = UDim2.fromScale(0.97, 1)
 					realTextbox.ZIndex = 5
 					realTextbox.ClearTextOnFocus = false
-					realTextbox.Font = Enum.Font.Code
+					realTextbox.Font = Enum.Font.GothamBold
 					realTextbox.LineHeight = 1.15
 					realTextbox.Text = tostring(presetValue)
 					realTextbox.TextColor3 = library.colors.otherElementText
@@ -3866,7 +3866,7 @@ function library:CreateWindow(options, ...)
 				dropdownSelection.Position = UDim2.new(0.0295485705)
 				dropdownSelection.Size = UDim2.fromScale(0.85, 1)
 				dropdownSelection.ZIndex = 5
-				dropdownSelection.Font = Enum.Font.Code
+				dropdownSelection.Font = Enum.Font.GothamBold
 				dropdownSelection.LineHeight = 1.15
 				dropdownSelection.Text = (passed_multiselect == "string" and multiselect) or tostring((multiselect and (blankstring or "Select Item(s)")) or (selectedOption and tostring(selectedOption)) or blankstring or "No Blank String")
 				dropdownSelection.TextColor3 = library.colors.otherElementText
@@ -3880,7 +3880,7 @@ function library:CreateWindow(options, ...)
 				dropdownHeadline.BackgroundTransparency = 1
 				dropdownHeadline.Position = UDim2.fromScale(0.034, 0.03)
 				dropdownHeadline.Size = UDim2.fromOffset(167, 11)
-				dropdownHeadline.Font = Enum.Font.Code
+				dropdownHeadline.Font = Enum.Font.GothamBold
 				dropdownHeadline.Text = (dropdownName and tostring(dropdownName)) or "???"
 				dropdownHeadline.TextColor3 = library.colors.elementText
 				colored[1 + #colored] = {dropdownHeadline, "TextColor3", "elementText"}
@@ -4022,7 +4022,7 @@ function library:CreateWindow(options, ...)
 							optionButton.Selectable = true
 							optionButton.Size = UDim2.new(1, -10, 1)
 							optionButton.ZIndex = 5
-							optionButton.Font = Enum.Font.Code
+							optionButton.Font = Enum.Font.GothamBold
 							optionButton.Text = (togged and (" " .. stringed)) or stringed
 							optionButton.TextColor3 = (togged and library.colors.main) or library.colors.otherElementText
 							optionButton.TextSize = 14
@@ -4541,7 +4541,7 @@ function library:CreateWindow(options, ...)
 					dropdownSelection.Position = UDim2.new(0.0295485705)
 					dropdownSelection.Size = UDim2.fromScale(0.97, 1)
 					dropdownSelection.ZIndex = 5
-					dropdownSelection.Font = Enum.Font.Code
+					dropdownSelection.Font = Enum.Font.GothamBold
 					dropdownSelection.LineHeight = 1.15
 					dropdownSelection.Text = (selectedOption and tostring(selectedOption)) or "nil"
 					dropdownSelection.TextColor3 = library.colors.otherElementText
@@ -4554,7 +4554,7 @@ function library:CreateWindow(options, ...)
 					dropdownHeadline.BackgroundTransparency = 1
 					dropdownHeadline.Position = UDim2.fromScale(0.034, 0.03)
 					dropdownHeadline.Size = UDim2.fromOffset(167, 11)
-					dropdownHeadline.Font = Enum.Font.Code
+					dropdownHeadline.Font = Enum.Font.GothamBold
 					dropdownHeadline.Text = (dropdownName and tostring(dropdownName)) or "???"
 					dropdownHeadline.TextColor3 = library.colors.elementText
 					colored[1 + #colored] = {dropdownHeadline, "TextColor3", "elementText"}
@@ -4693,7 +4693,7 @@ function library:CreateWindow(options, ...)
 								optionButton.Position = UDim2.fromScale(0.5, 0.5)
 								optionButton.Size = UDim2.new(1, -10, 1)
 								optionButton.ZIndex = 5
-								optionButton.Font = Enum.Font.Code
+								optionButton.Font = Enum.Font.GothamBold
 								optionButton.Text = (selectedOption == v and " " .. tostring(v)) or tostring(v)
 								optionButton.TextColor3 = (selectedOption == v and library.colors.main or library.colors.otherElementText)
 								optionButton.TextSize = 14
@@ -5057,7 +5057,7 @@ function library:CreateWindow(options, ...)
 							realButton.BackgroundTransparency = 1
 							realButton.Size = UDim2.fromScale(1, 1)
 							realButton.ZIndex = 5
-							realButton.Font = Enum.Font.Code
+							realButton.Font = Enum.Font.GothamBold
 							realButton.Text = (buttonName and tostring(buttonName)) or "???"
 							realButton.TextColor3 = library.colors.elementText
 							colored[1 + #colored] = {realButton, "TextColor3", "elementText"}
@@ -5080,7 +5080,7 @@ function library:CreateWindow(options, ...)
 							button.BackgroundColor3 = library.colors.topGradient
 							local colored_button_BackgroundColor3 = {button, "BackgroundColor3", "topGradient"}
 							colored[1 + #colored] = colored_button_BackgroundColor3
-							button.BorderColor3 = library.colors.elementBorder
+							button.BorderColor3 = Color3.fromRGB(51, 139, 255)
 							colored[1 + #colored] = {button, "BorderColor3", "elementBorder"}
 							button.Position = UDim2.new(0.031, offset, 0.166)
 							button.Selectable = true
@@ -5338,7 +5338,7 @@ function library:CreateWindow(options, ...)
 				dropdownSelection.Selectable = true
 				dropdownSelection.Size = UDim2.fromScale(0.97, 1)
 				dropdownSelection.ZIndex = 5
-				dropdownSelection.Font = Enum.Font.Code
+				dropdownSelection.Font = Enum.Font.GothamBold
 				dropdownSelection.Text = (passed_multiselect == "string" and multiselect) or (multiselect and tostring(blankstring or "Select Item(s)")) or (selectedOption and tostring(selectedOption)) or tostring(blankstring or "No Blank String")
 				dropdownSelection.TextColor3 = library.colors.otherElementText
 				colored[1 + #colored] = {dropdownSelection, "TextColor3", "otherElementText"}
@@ -5350,7 +5350,7 @@ function library:CreateWindow(options, ...)
 				dropdownHeadline.BackgroundTransparency = 1
 				dropdownHeadline.Position = UDim2.fromScale(0.034, 0.03)
 				dropdownHeadline.Size = UDim2.fromOffset(167, 11)
-				dropdownHeadline.Font = Enum.Font.Code
+				dropdownHeadline.Font = Enum.Font.GothamBold
 				dropdownHeadline.Text = (dropdownName and tostring(dropdownName)) or "???"
 				dropdownHeadline.TextColor3 = library.colors.elementText
 				colored[1 + #colored] = {dropdownHeadline, "TextColor3", "elementText"}
@@ -5542,7 +5542,7 @@ function library:CreateWindow(options, ...)
 						optionButton.Position = UDim2.fromScale(0.5, 0.5)
 						optionButton.Size = UDim2.new(1, -10, 1)
 						optionButton.ZIndex = 5
-						optionButton.Font = Enum.Font.Code
+						optionButton.Font = Enum.Font.GothamBold
 						optionButton.Text = (togged and (" " .. stringed)) or stringed
 						optionButton.TextColor3 = (togged and library.colors.main) or library.colors.otherElementText
 						optionButton.TextSize = 14
@@ -5940,7 +5940,7 @@ function library:CreateWindow(options, ...)
 				colorPicker.BackgroundColor3 = library.colors.topGradient
 				local colored_colorPicker_BackgroundColor3 = {colorPicker, "BackgroundColor3", "topGradient"}
 				colored[1 + #colored] = colored_colorPicker_BackgroundColor3
-				colorPicker.BorderColor3 = library.colors.elementBorder
+				colorPicker.BorderColor3 = Color3.fromRGB(51, 139, 255)
 				colored[1 + #colored] = {colorPicker, "BorderColor3", "elementBorder"}
 				colorPicker.Position = UDim2.fromScale(0.842, 0.113)
 				colorPicker.Selectable = true
@@ -5967,7 +5967,7 @@ function library:CreateWindow(options, ...)
 				colorPickerHeadline.BackgroundTransparency = 1
 				colorPickerHeadline.Position = UDim2.fromScale(0.034, 0.113)
 				colorPickerHeadline.Size = UDim2.fromOffset(173, 11)
-				colorPickerHeadline.Font = Enum.Font.Code
+				colorPickerHeadline.Font = Enum.Font.GothamBold
 				colorPickerHeadline.Text = colorPickerName or "???"
 				colorPickerHeadline.TextColor3 = library.colors.elementText
 				colored[1 + #colored] = {colorPickerHeadline, "TextColor3", "elementText"}
@@ -6138,7 +6138,7 @@ function library:CreateWindow(options, ...)
 				hexInputBox.BackgroundTransparency = 1
 				hexInputBox.Size = UDim2.fromScale(1, 1)
 				hexInputBox.ZIndex = 5
-				hexInputBox.Font = Enum.Font.Code
+				hexInputBox.Font = Enum.Font.GothamBold
 				hexInputBox.PlaceholderText = "Hex Input"
 				hexInputBox.Text = Color3ToHex(startingColor)
 				hexInputBox.TextColor3 = library.colors.elementText
