@@ -508,14 +508,14 @@ function library.unload()
 end
 library.Unload = library.unload
 local Instance_new = (syn and syn.protect_gui and function(...)
-	local x = {Instance_new(...)}
+	local x = {Instance.new(...)}
 	if x[1] then
 		library.objects[1 + #library.objects] = x[1]
 		pcall(syn.protect_gui, x[1])
 	end
 	return unpack(x)
 end) or function(...)
-	local x = {Instance_new(...)}
+	local x = {Instance.new(...)}
 	if x[1] then
 		library.objects[1 + #library.objects] = x[1]
 	end
@@ -1246,8 +1246,8 @@ do
 		end
 	end
 	do
-		local Popups = Instance_new("Frame")
-		local UIListLayout = Instance_new("UIListLayout")
+		local Popups = Instance.new("Frame")
+		local UIListLayout = Instance.new("UIListLayout")
 		library.NotifyLayout = UIListLayout
 		Popups.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		Popups.BackgroundTransparency = 1
@@ -1324,15 +1324,15 @@ do
 				Arguments = NotificationData
 			}
 			NotificationObj.Forced = NotificationObj.Paused
-			local Notification = Instance_new("Frame")
+			local Notification = Instance.new("Frame")
 			NotificationObj.Object = Notification
-			local Border = Instance_new("Frame")
-			local Inner = Instance_new("Frame")
-			local Border_2 = Instance_new("Frame")
-			local Text = Instance_new("TextLabel")
+			local Border = Instance.new("Frame")
+			local Inner = Instance.new("Frame")
+			local Border_2 = Instance.new("Frame")
+			local Text = Instance.new("TextLabel")
 			NotificationObj.TextLabel = Text
-			local Bar = Instance_new("Frame")
-			local Close = Instance_new("ImageButton")
+			local Bar = Instance.new("Frame")
+			local Close = Instance.new("ImageButton")
 			Notification.AnchorPoint = Vector2.one
 			Notification.BackgroundColor3 = library.colors.background
 			colored[1 + #colored] = {Notification, "BackgroundColor3", "background"}
