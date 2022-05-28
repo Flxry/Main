@@ -821,7 +821,7 @@ do
 			Text.AnchorPoint = Vector2.new(0.5, 0.5)
 			Text.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 			Text.BackgroundTransparency = 1
-			Text.Font = Enum.Font.GothamBlack
+			Text.Font = Enum.Font.GothamBold
 			Text.FontSize = Enum.FontSize.Size14
 			Text.Name = "Text"
 			Text.Parent = Border_2
@@ -1633,7 +1633,7 @@ function library:CreateWindow(options, ...)
 	headline.BackgroundColor3 = Color3.new(1, 1, 1)
 	headline.BackgroundTransparency = 1
 	headline.LayoutOrder = 1
-	headline.Font = Enum.Font.GothamBlack
+	headline.Font = Enum.Font.GothamBold
 	headline.Text = (windowName and tostring(windowName)) or "???"
 	headline.TextColor3 = library.colors.main
 	colored[1 + #colored] = {headline, "TextColor3", "main"}
@@ -1737,7 +1737,7 @@ function library:CreateWindow(options, ...)
 		else
 			colored_newTab_TextColor3 = {newTab, "TextColor3", "tabText"}
 			colored[1 + #colored] = colored_newTab_TextColor3
-			newTab.Font = Enum.Font.GothamBlack
+			newTab.Font = Enum.Font.GothamBold
 			newTab.Text = (tabName and tostring(tabName)) or "???"
 			if windowFunctions.tabCount ~= 1 then
 				colored_newTab_TextColor3[4] = 1.35
@@ -1884,7 +1884,7 @@ function library:CreateWindow(options, ...)
 			sectionHeadline.BackgroundTransparency = 1
 			sectionHeadline.Position = UDim2.fromOffset(18, -8)
 			sectionHeadline.ZIndex = 2
-			sectionHeadline.Font = Enum.Font.GothamBlack
+			sectionHeadline.Font = Enum.Font.GothamBold
 			sectionHeadline.LineHeight = 1.15
 			sectionHeadline.Text = (sectionName and sectionName or "???")
 			sectionHeadline.TextColor3 = library.colors.section
@@ -1987,7 +1987,7 @@ function library:CreateWindow(options, ...)
 				toggleHeadline.BackgroundTransparency = 1
 				toggleHeadline.Position = UDim2.fromScale(0.123, 0.165842161)
 				toggleHeadline.Size = UDim2.fromOffset(170, 11)
-				toggleHeadline.Font = Enum.Font.GothamBlack
+				toggleHeadline.Font = Enum.Font.GothamBold
 				toggleHeadline.Text = toggleName or "???"
 				toggleHeadline.TextColor3 = library.colors.elementText
 				local colored_toggleHeadline_TextColor3 = {toggleHeadline, "TextColor3", "elementText", (lockedup and 0.5) or nil}
@@ -3455,13 +3455,13 @@ function library:CreateWindow(options, ...)
 				sliderColored.Name = "sliderColored"
 				sliderColored.Parent = sliderInner
 				sliderColored.Active = true
-				sliderColored.BackgroundColor3 = darkenColor(library.colors.main, 1.5)
+				sliderColored.BackgroundColor3 = Color3.fromRGB(51, 139, 255)
 				colored[1 + #colored] = {sliderColored, "BackgroundColor3", "main", 1.5}
 				sliderColored.BorderSizePixel = 0
 				sliderColored.Selectable = true
 				sliderColored.Size = UDim2.fromScale(((startingValue or minValue) - minValue) / (maxValue - minValue), 1)
 				sliderColored.Image = "rbxassetid://2454009026"
-				sliderColored.ImageColor3 = darkenColor(library.colors.main, 2.5)
+				sliderColored.ImageColor3 = Color3.fromRGB(51, 139, 255)
 				colored[1 + #colored] = {sliderColored, "ImageColor3", "main", 2.5}
 				sliderHeadline.Name = "sliderHeadline"
 				sliderHeadline.Parent = newSlider
@@ -3472,7 +3472,7 @@ function library:CreateWindow(options, ...)
 				sliderHeadline.Selectable = true
 				sliderHeadline.Size = UDim2.fromOffset(206, 20)
 				sliderHeadline.ZIndex = 5
-				sliderHeadline.Font = Enum.Font.Code
+				sliderHeadline.Font = Enum.Font.GothamBold
 				sliderHeadline.LineHeight = 1.15
 				sliderHeadline.Text = resolvedisplay(startingValue)
 				sliderHeadline.TextColor3 = library.colors.elementText
