@@ -1635,7 +1635,7 @@ function library:CreateWindow(options, ...)
 	headline.LayoutOrder = 1
 	headline.Font = Enum.Font.GothamBold
 	headline.Text = (windowName and tostring(windowName)) or "???"
-	headline.TextColor3 = library.colors.main
+	headline.TextColor3 = Color3.fromRGB(51, 139, 255)
 	colored[1 + #colored] = {headline, "TextColor3", "main"}
 	headline.TextSize = 14
 	headline.TextStrokeColor3 = library.colors.outerBorder
@@ -1945,7 +1945,7 @@ function library:CreateWindow(options, ...)
 				toggle.BackgroundColor3 = library.colors.topGradient
 				local colored_toggle_BackgroundColor3 = {toggle, "BackgroundColor3", "topGradient"}
 				colored[1 + #colored] = colored_toggle_BackgroundColor3
-				toggle.BorderColor3 = library.colors.elementBorder
+				toggle.BorderColor3 = Color3.fromRGB(51, 139, 255)
 				colored[1 + #colored] = {toggle, "BorderColor3", "elementBorder"}
 				toggle.Position = UDim2.fromScale(0.0308237672, 0.165842205)
 				toggle.Selectable = true
@@ -2023,8 +2023,8 @@ function library:CreateWindow(options, ...)
 							colored_toggleInner_ImageColor3[3] = (newStatus and "main") or "bottomGradient"
 							colored_toggleInner_ImageColor3[4] = (newStatus and 2.5) or nil
 							tweenService:Create(toggleInner, TweenInfo.new(0.35, library.configuration.easingStyle, library.configuration.easingDirection), {
-								BackgroundColor3 = (newStatus and darkenColor(library.colors.main, 1.5)) or library.colors.topGradient,
-								ImageColor3 = (newStatus and darkenColor(library.colors.main, 2.5)) or library.colors.bottomGradient
+								BackgroundColor3 = Color3.fromRGB(51, 139, 255),
+								ImageColor3 = Color3.fromRGB(51, 139, 255)
 							}):Play()
 							task.spawn(callback, newStatus, last_v)
 						end
@@ -2081,7 +2081,7 @@ function library:CreateWindow(options, ...)
 					keybindButton.Position = UDim2.fromScale(0.598130822, 0.184210524)
 					keybindButton.Selectable = false
 					keybindButton.Size = UDim2.fromOffset(46, 12)
-					keybindButton.Font = Enum.Font.Code
+					keybindButton.Font = Enum.Font.GothamBold
 					keybindButton.Text = keyName or (presetKeybind and tostring(presetKeybind):gsub("Enum.KeyCode.", "")) or "[NONE]"
 					keybindButton.TextColor3 = library.colors.otherElementText
 					local colored_keybindButton_TextColor3 = {keybindButton, "TextColor3", "otherElementText"}
@@ -3429,7 +3429,7 @@ function library:CreateWindow(options, ...)
 				slider.BackgroundColor3 = library.colors.topGradient
 				local colored_slider_BackgroundColor3 = {slider, "BackgroundColor3", "topGradient"}
 				colored[1 + #colored] = colored_slider_BackgroundColor3
-				slider.BorderColor3 = library.colors.elementBorder
+				slider.BorderColor3 = Color3.fromRGB(51, 139, 255)
 				colored[1 + #colored] = {slider, "BorderColor3", "elementBorder"}
 				slider.Position = UDim2.fromScale(0.031, 0.48)
 				slider.Selectable = true
