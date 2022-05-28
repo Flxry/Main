@@ -327,9 +327,7 @@ do
 		MayGC -= 1
 	end
 end
-local function updatecolorsnotween()
-	updatecolors()
-end
+
 library.subs.updatecolors = updatecolors
 library.colors = setmetatable({}, {
 	__index = colors,
