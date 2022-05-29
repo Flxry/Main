@@ -331,15 +331,7 @@ local function updatecolorsnotween()
 	updatecolors()
 end
 library.subs.updatecolors = updatecolors
-library.colors = setmetatable({}, {
-	__index = colors,
-	__newindex = function(_, k, v)
-		if colors[k] ~= v then
-			colors[k] = v
-			spawn(updatecolorsnotween)
-		end
-	end
-})
+
 local elements = library.elements
 shared.libraries = shared.libraries or {}
 local colorpickerconflicts = library.colorpickerconflicts
