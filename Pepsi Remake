@@ -227,7 +227,7 @@ local function resolveid(image, flag)
 end
 library.subs.ResolveID = resolveid
 library.resolvercache = resolvercache
-local colored = library.colored
+local colored, colors = library.colored
 local tweenService = game:GetService("TweenService")
 local MainScreenGui = nil
 do
@@ -6693,11 +6693,7 @@ function library:CreateWindow(options, ...)
 			designerelements[v[2]] = v[3][v[1]](v[3], v[4])
 		end
 		designerelements["__Designer.Textbox.WorkspaceName"]:Set(library.WorkspaceName or "Unnamed Workspace")
-		for k, v in next, elements do
-			if v and k and string.sub(k, 1, 11) == "__Designer." and v.Type and v.Type ~= "Persistence" then
-				flags[1 + #flags] = k
-			end
-		end
+
 		if library.Backdrop then
 			library.Backdrop.Image = resolveid(library_flags["__Designer.Background.ImageAssetID"], "__Designer.Background.ImageAssetID") or ""
 			library.Backdrop.Visible = library_flags["__Designer.Background.UseBackgroundImage"] and true
