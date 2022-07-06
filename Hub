@@ -1,11 +1,13 @@
 local Games = {
-    [8750997647] = "TLX",
-    [7560156054] = "Clicker%20Simulator"
+    [7560156054] = "Clicker%20Simulator",
+    [8750997647] = "Tapping%20Legends%20X",
+    [7839440834] = "Sea%20Cleaning%20Simulator",
+    [8962384769] = "Firework%20Simulator"
 }
 
 for i,v in pairs(Games) do
     if game.PlaceId == i then
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Flxry/Main/main/"..v))()
+        loadstring(game:HttpGet("hhttps://raw.githubusercontent.com/Flxry/Main/MilkyHub/"..v))()
         print("Script Loaded: "..v)
     end
 end
