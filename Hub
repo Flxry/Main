@@ -7,7 +7,7 @@ local Games = {
 
 for i,v in pairs(Games) do
     if game.PlaceId == i then
-        loadstring(game:HttpGet("hhttps://raw.githubusercontent.com/Flxry/Main/MilkyHub/"..v))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Flxry/Main/MilkyHub/"..v))()
         print("Script Loaded: "..v)
     end
 end
