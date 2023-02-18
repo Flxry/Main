@@ -1847,7 +1847,7 @@ function RayfieldLibrary:CreateWindow(Settings)
                             v.Visible = true
                         end
                     end
-                elseif Dropdown.List.Search.InputBox.Text ~= "" then
+                elseif Dropdown.List.Search.Search.Text ~= "" then
                     for i,v in pairs(Dropdown.List:GetChildren()) do
                         if v:IsA("Frame") and v.Name ~= "Search" and v.Name ~= "Placeholder" then
                             if not string.find(v.Title.Text:lower(), Dropdown.List.Search.Search.Text:lower()) then
