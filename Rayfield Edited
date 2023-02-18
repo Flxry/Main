@@ -1830,7 +1830,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 						end
 						DropdownSettings.CurrentOption = Option
 						for _, droption in ipairs(Dropdown.List:GetChildren()) do
-							if droption.ClassName == "Frame" and droption.Name ~= "Placeholder" and droption.Name ~= DropdownSettings.CurrentOption then
+							if droption.ClassName == "Frame" and droption.Name ~= "Placeholder" and droption.Name ~= "Search" and droption.Name ~= DropdownSettings.CurrentOption then
 								TweenService:Create(droption, TweenInfo.new(0.3, Enum.EasingStyle.Quint), {BackgroundColor3 = Color3.fromRGB(30, 30, 30)}):Play()
 							end
 						end
@@ -1840,8 +1840,8 @@ function RayfieldLibrary:CreateWindow(Settings)
 				end)
 			end
 
-            Dropdown.List.Search.InputBox.Changed:Connect(function()
-                if Dropdown.List.Search.InputBox.Text == "" then
+            Dropdown.List.Search.Search.Changed:Connect(function()
+                if Dropdown.List.Search.Search.Text == "" then
                     for i,v in pairs(Dropdown.List:GetChildren()) do
                         if v:IsA("Frame") and v.Name ~= "Search" and v.Name ~= "Placeholder" then
                             v.Visible = true
@@ -1850,7 +1850,7 @@ function RayfieldLibrary:CreateWindow(Settings)
                 elseif Dropdown.List.Search.InputBox.Text ~= "" then
                     for i,v in pairs(Dropdown.List:GetChildren()) do
                         if v:IsA("Frame") and v.Name ~= "Search" and v.Name ~= "Placeholder" then
-                            if not string.find(v.Title.Text:lower(), Dropdown.List.Search.InputBox.Text:lower()) then
+                            if not string.find(v.Title.Text:lower(), Dropdown.List.Search.Search.Text:lower()) then
                                 v.Visible = false
                             end
                         end
@@ -1878,7 +1878,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 
 				for _, droption in ipairs(Dropdown.List:GetChildren()) do
 					if droption.Name ~= NewOption then
-						if droption.ClassName == "Frame" and droption.Name ~= "Placeholder" then
+						if droption.ClassName == "Frame" and droption.Name ~= "Placeholder" and droption.Name ~= "Search" then
 							droption.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 						end
 					else
