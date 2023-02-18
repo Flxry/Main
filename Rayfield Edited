@@ -1843,12 +1843,16 @@ function RayfieldLibrary:CreateWindow(Settings)
             Dropdown.List.Search.InputBox.Changed:Connect(function()
                 if Dropdown.List.Search.InputBox.Text == "" then
                     for i,v in pairs(Dropdown.List:GetChildren()) do
-                        v.Visible = true
+                        if v:IsA("Frame") and v.Name ~= "Search" and v.Name ~= "Placeholder" then
+                            v.Visible = true
+                        end
                     end
                 elseif Dropdown.List.Search.InputBox.Text ~= "" then
                     for i,v in pairs(Dropdown.List:GetChildren()) do
-                        if not string.find(v.Title.Text:lower(), Dropdown.List.Search.InputBox.Text:lower()) then
-                            v.Visible = false
+                        if v:IsA("Frame") and v.Name ~= "Search" and v.Name ~= "Placeholder" then
+                            if not string.find(v.Title.Text:lower(), Dropdown.List.Search.InputBox.Text:lower()) then
+                                v.Visible = false
+                            end
                         end
                     end
                 end
