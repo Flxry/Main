@@ -1681,6 +1681,11 @@ function RayfieldLibrary:CreateWindow(Settings)
 				Dropdown.Name = DropdownSettings.Name
 			end
 			Dropdown.Title.Text = DropdownSettings.Name
+			if DropdownSettings.Icon ~= nil then
+				Dropdown.Title.Position = Udim2.fromOffset(152,21)
+				Dropdown.Icon.Visible = true
+				Dropdown.Icon.Image = DropdownSettings.Icon
+			end
 			Dropdown.Visible = true
 			Dropdown.Parent = TabPage
 
@@ -1691,12 +1696,14 @@ function RayfieldLibrary:CreateWindow(Settings)
 			Dropdown.BackgroundTransparency = 1
 			Dropdown.UIStroke.Transparency = 1
 			Dropdown.Title.TextTransparency = 1
+			Dropdown.Icon.ImageTransparency = 1
 
 			Dropdown.Size = UDim2.new(1, -10, 0, 45)
 
 			TweenService:Create(Dropdown, TweenInfo.new(0.7, Enum.EasingStyle.Quint), {BackgroundTransparency = 0}):Play()
 			TweenService:Create(Dropdown.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Quint), {Transparency = 0}):Play()
 			TweenService:Create(Dropdown.Title, TweenInfo.new(0.7, Enum.EasingStyle.Quint), {TextTransparency = 0}):Play()	
+			TweenService:Create(Dropdown.Icon.ImageTransparency, TweenInfo.new(0.7, Enum.EasingStyle.Quint), {TextTransparency = 0}):Play()
 
 			for _, ununusedoption in ipairs(Dropdown.List:GetChildren()) do
 				if ununusedoption.ClassName == "Frame" and ununusedoption.Name ~= "Placeholder" and ununusedoption.Name ~= "Search" then
