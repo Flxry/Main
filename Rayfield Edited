@@ -1901,7 +1901,11 @@ function RayfieldLibrary:CreateWindow(Settings)
 
 
 			function DropdownSettings:Set(NewOption)
-				Dropdown.Selected.Text = NewOption
+				if DropdownSettings.Multi then
+					Dropdown.Selected.Text = table.concat(NewOption, ", ")
+				else
+					Dropdown.Selected.Text = NewOption
+				end
 				DropdownSettings.CurrentOption = NewOption
 				local Success, Response = pcall(function()
 					DropdownSettings.Callback(NewOption)
@@ -1918,19 +1922,17 @@ function RayfieldLibrary:CreateWindow(Settings)
 				end
 
 				for _, droption in ipairs(Dropdown.List:GetChildren()) do
-					if droption.Name ~= NewOption then
+					if (DropdownSettings.Multi and not table.find(NewOption, droption.Name)) or (not DropdownSettings.Multi and droption.Name ~= NewOption) then
 						if droption.ClassName == "Frame" and droption.Name ~= "Placeholder" and droption.Name ~= "Search" then
 							droption.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 						end
 					else
 						droption.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 					end
-
 				end
 			end
 
 			function DropdownSettings:UpdateOptions(NewOptions)
-				
 				TweenService:Create(Dropdown, TweenInfo.new(0.5, Enum.EasingStyle.Quint), {Size = UDim2.new(1, -10, 0, 45)}):Play()
 				for _, DropdownOpt in ipairs(Dropdown.List:GetChildren()) do
 					if DropdownOpt.ClassName == "Frame" and DropdownOpt.Name ~= "Placeholder" then
@@ -2246,7 +2248,6 @@ function RayfieldLibrary:CreateWindow(Settings)
             end)
 
 			function ListSettings:UpdateRules(RulesReplacement)
-
 				TweenService:Create(ListClone, TweenInfo.new(0.5, Enum.EasingStyle.Quint), {Size = UDim2.new(1, -10, 0, 45)}):Play()
 				for _, DropdownOpt in ipairs(ListClone.Rules:GetChildren()) do
 					if DropdownOpt.ClassName == "Frame" and DropdownOpt.Name ~= "Placeholder" then
